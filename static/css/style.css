@@ -1,0 +1,18 @@
+@import '../css/reset.css';
+@import '../css/variables.css';
+
+/* Components */
+
+@import '../css/components/header.css';
+@import '../css/components/login-box.css';
+
+/* Screens */
+
+@import '../css/screens/login.css';
+@import '../css/screens/preference.css';
+
+/* body */
+
+body {
+    background-color: var(--main);
+}

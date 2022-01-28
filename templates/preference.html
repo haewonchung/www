@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="">
+    <script defer src="../static/js/preference.js"></script>
+
+</head>
+
+<body>
+    <div class="login">
+        <div class="preference">
+            당신의 취향은 무엇인가요?
+        </div>
+        <form class="login-form" action="" method="post">
+            <div class="login-login-form__title">
+                <p>나는 이런 것을 선호해요.</p>
+                <img src="../static/images/preference.png" alt="preference">
+            </div>
+            <div class="login-form__checkbox">
+                <div class="login-form__box">
+                    <div class="login-form__title">
+                        <p>나는 __같은 바디감을 선호한다.</p>
+                        <p>Body</p>
+                    </div>
+                    <div class="check1">
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk1" id="checkbox1__check1" class="login-form-checkbox1__check1" value="1" onclick="check1(this)">
+                            <label for="checkbox1__check1">   
+                                </label>
+                            <p>물</p>
+                        </div>
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk1" id="checkbox1__check2" class="login-form-checkbox1__check2" value="2" onclick="check1(this)">
+                            <label for="checkbox1__check2">
+                                </label>
+                            <p>오렌지 주스</p>
+                        </div>
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk1" id="checkbox1__check3" class="login-form-checkbox1__check4" value="3" onclick="check1(this)">
+                            <label for="checkbox1__check3">
+                                </label>
+                            <p>우유</p>
+                        </div>
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk1" id="checkbox1__check4" class="login-form-checkbox1__check5" value="4" onclick="check1(this)">
+                            <label for="checkbox1__check4">
+                                </label>
+                            <p>카페라떼</p>
+                        </div>
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk1" id="checkbox1__check5" class="login-form-checkbox1__check1" value="5" onclick="check1(this)">
+                            <label for="checkbox1__check5">
+                                </label>
+                            <p>고카페인 초콜릿 우유</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-form__box">
+                    <div class="login-form__title">
+                        <p>나는 녹차와 같은 떫은 맛을 __.</p>
+                        <p>Tannin</p>
+                    </div>
+                    <div class="check1">
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk2" id="checkbox2__check1" class="login-form-checkbox1__check1" value="1" onclick="check2(this)">
+                            <label for="checkbox2__check1">   
+                                </label>
+                            <p>매우 싫어한다.</p>
+                        </div>
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk2" id="checkbox2__check2" class="login-form-checkbox1__check2" value="2" onclick="check2(this)">
+                            <label for="checkbox2__check2">
+                                </label>
+                            <p>조금 싫어한다.</p>
+                        </div>
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk2" id="checkbox2__check3" class="login-form-checkbox1__check4" value="3" onclick="check2(this)">
+                            <label for="checkbox2__check3">
+                                </label>
+                            <p>보통이다.</p>
+                        </div>
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk2" id="checkbox2__check4" class="login-form-checkbox1__check5" value="4" onclick="check2(this)">
+                            <label for="checkbox2__check4">
+                                </label>
+                            <p>조금 좋아한다.</p>
+                        </div>
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk2" id="checkbox2__check5" class="login-form-checkbox1__check1" value="5" onclick="check2(this)">
+                            <label for="checkbox2__check5">
+                                </label>
+                            <p>매우 좋아한다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-form__box">
+                    <div class="login-form__title">
+                        <p>나는 레몬에이드 같은 신맛을 __.</p>
+                        <p>Acidity</p>
+                    </div>
+                    <div class="check1">
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk3" id="checkbox3__check1" class="login-form-checkbox1__check1" value="1" onclick="check3(this)">
+                            <label for="checkbox3__check1">   
+                                </label>
+                            <p>매우 싫어한다.</p>
+                        </div>
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk3" id="checkbox3__check2" class="login-form-checkbox1__check2" value="2" onclick="check3(this)">
+                            <label for="checkbox3__check2">
+                                </label>
+                            <p>조금 싫어한다.</p>
+                        </div>
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk3" id="checkbox3__check3" class="login-form-checkbox1__check4" value="3" onclick="check3(this)">
+                            <label for="checkbox3__check3">
+                                </label>
+                            <p>보통이다.</p>
+                        </div>
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk3" id="checkbox3__check4" class="login-form-checkbox1__check5" value="4" onclick="check3(this)">
+                            <label for="checkbox3__check4">
+                                </label>
+                            <p>조금 좋아한다.</p>
+                        </div>
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk3" id="checkbox3__check5" class="login-form-checkbox1__check1" value="5" onclick="check3(this)">
+                            <label for="checkbox3__check5">
+                                </label>
+                            <p>매우 좋아한다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-form__box">
+                    <div class="login-form__title">
+                        <p>나는 콜라 같은 단맛을 __.</p>
+                        <p>Sweetness</p>
+                    </div>
+                    <div class="check1">
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk4" id="checkbox4__check1" class="login-form-checkbox1__check1" value="1" onclick="check4(this)">
+                            <label for="checkbox4__check1">   
+                                </label>
+                            <p>매우 싫어한다.</p>
+                        </div>
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk4" id="checkbox4__check2" class="login-form-checkbox1__check2" value="2" onclick="check4(this)">
+                            <label for="checkbox4__check2">
+                                </label>
+                            <p>조금 싫어한다.</p>
+                        </div>
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk4" id="checkbox4__check3" class="login-form-checkbox1__check4" value="3" onclick="check4(this)">
+                            <label for="checkbox4__check3">
+                                </label>
+                            <p>보통이다.</p>
+                        </div>
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk4" id="checkbox4__check4" class="login-form-checkbox1__check5" value="4" onclick="check4(this)">
+                            <label for="checkbox4__check4">
+                                </label>
+                            <p>조금 좋아한다.</p>
+                        </div>
+                        <div class="login-form-check">
+                            <input type="checkbox" name="chk4" id="checkbox4__check5" class="login-form-checkbox1__check1" value="5" onclick="check4(this)">
+                            <label for="checkbox4__check5">
+                                </label>
+                            <p>매우 좋아한다.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <input class="login-form__btn" value="와인 추천 받기" type="submit">
+        </form>
+    </div>
+</body>
+
+</html>
