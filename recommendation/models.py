@@ -1,12 +1,13 @@
 from django.db import models
-from user.models import userModel, userProfile
+from user.models import User, UserProfile
 
 
-class wine(models.Model):
+class Wine(models.Model):
     class Meta:
-        db_table = "wine_list"
+        db_table = "wine"
 
-    user = models.ForeignKey(userModel, on_delete=models.CASCADE)
+    user = models.ManyToManyField(User, blank=True)
+    food = models.ManyToManyField('Food', blank=True)
     item = models.CharField(max_length=256)
     vintage = models.IntegerField()
     type = models.CharField(max_length=100)
@@ -14,32 +15,24 @@ class wine(models.Model):
     rating = models.IntegerField()
     price = models.IntegerField(null=True)
     primary_flavors = models.TextField(null=True)
-    chefs_note = models.TextField(null=True)
 
 
-class recommendation(models.Model):
+class WineProfile(models.Model):
     class Meta:
-        db_table = "recommendation"
+        db_table = "wine_profile"
 
-    user = models.ForeignKey(userModel, on_delete=models.CASCADE)
-    wine = models.ForeignKey(wine, on_delete=models.CASCADE)
-    user_taste = models.ForeignKey(userProfile, on_delete=models.CASCADE)
-
-
-class wineTaste(models.Model):
-    class Meta:
-        db_table = "wine_taste"
-
+    wine = models.OneToOneField(Wine, on_delete=models.CASCADE)
     body = models.IntegerField()
     tannin = models.IntegerField()
     acidity = models.IntegerField()
     sweetness = models.IntegerField()
 
 
-class food(models.Model):
+class Food(models.Model):
     class Meta:
-        db_table = "food_list"
+        db_table = "food"
 
     item = models.CharField(max_length=256)
     description = models.TextField()
+
 
