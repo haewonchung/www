@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,9 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="">
-    <script defer src="../static/js/preference.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script defer src="{% static 'js/preference.css' %}"></script>
 
 </head>
 
@@ -19,7 +19,7 @@
         <form class="login-form" action="" method="post">
             <div class="login-login-form__title">
                 <p>나는 이런 것을 선호해요.</p>
-                <img src="../static/images/preference.png" alt="preference">
+                <img src="../../static/images/preference.png" alt="preference">
             </div>
             <div class="login-form__checkbox">
                 <div class="login-form__box">

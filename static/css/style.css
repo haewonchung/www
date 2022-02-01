@@ -1,15 +1,302 @@
-@import '../css/reset.css';
-@import '../css/variables.css';
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
-/* Components */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
 
-@import '../css/components/header.css';
-@import '../css/components/login-box.css';
+/* HTML5 display-role reset for older browsers */
 
-/* Screens */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
 
-@import '../css/screens/login.css';
-@import '../css/screens/preference.css';
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input:focus {
+    outline: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+:root {
+    --main: rgba(108, 12, 18, 1);
+    --sub: rgba(195, 154, 55, 1);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 30px;
+    padding: 50px 0px;
+    min-width: 450px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+}
+
+.login-form__img {
+    height: 50px;
+    padding-bottom: 30px;
+}
+
+.login-form__input {
+    border: none;
+    padding: 15px 10px;
+    font-size: 16px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    transition: border-color 0.3s ease-in-out;
+    width: 320px;
+}
+
+.login-form__input::placeholder {
+    padding: 0 3%;
+    color: var(--main);
+}
+
+.login-form__btn {
+    background-color: var(--sub);
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    padding: 10px 0px;
+    border-radius: 10px;
+    border: none;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 45px;
+    width: 340px;
+}
+
+.login-form__bottom {
+    display: flex;
+    justify-content: center;
+    border: 0px;
+    color: var(--sub);
+    margin-top: 10px;
+}
+
+.login-form__a {
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    font-size: 13px;
+    margin: 0px 20px;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-log__img {
+    height: 440px;
+    margin: 0px 50px;
+}
+
+.preference {
+    color: white;
+    font-size: 2vw;
+    width: 434.05px;
+    text-align: center;
+    max-width: 50vh;
+}
+
+.login-login-form__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 20px;
+    font-size: larger;
+}
+
+.login-form img {
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+.login-form__box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 1vh 2vw;
+}
+
+.login-form__title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-form__box p {
+    font-size: 1vw;
+}
+
+.check1 {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.login-form-check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px 5px;
+    width: 9vw;
+}
+
+.login-form-check p {
+    font-size: 1vw;
+}
+
+.login-form input[type="checkbox"] {
+    display: none;
+}
+
+.login-form label {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    border: 2px solid var(--sub);
+    border-radius: 50%;
+    margin: 10px 20px;
+}
+
+input[type="checkbox"]:checked + label {
+    background-color: var(--sub);
+}
 
 /* body */
 
