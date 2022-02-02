@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
     회원가입
@@ -6,10 +7,11 @@
 {% block content %}
     <div class="login">
         <div class="login-logo">
-            <img src="../../static/images/logo.png" alt="logo">
+            <img src="{% static 'images/logo.png' %}" alt="logo">
         </div>
+
         <form class="login-form" action="" method="post">
-            <img class="login-form__img" src="../../static/images/wine-glass1.png" alt="wine-glass">
+            <img class="login-form__img" src="{% static 'images/wine-glass1.png' %}" alt="wine-glass">
             <input type="text" name="username" class="login-form__input" placeholder="아이디를 입력하세요. ex)world@wonder.com" required>
             <input type="password" name="password" class="login-form__input" placeholder="비밀번호를 입력하세요." required maxlength="16">
             <input type="password" name="password" class="login-form__input" placeholder="비밀번호를 다시 한번 입력하세요." required maxlength="16">
