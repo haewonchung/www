@@ -1,0 +1,56 @@
+.header-button {
+    height: 19%;
+}
+
+.logo {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    left: 8%;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #852F34;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 20px 20px;
+}
+
+.upright-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 2% 8%;
+}
+
+.all-wine-inform {
+    width: 161px;
+    height: 49px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    background: #852F34;
+    border-radius: 30px;
+}
+
+.logout {
+    width: 161px;
+    height: 49px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #852F34;
+    border-radius: 30px;
+}
+
+.my-pick {
+    width: 161px;
+    height: 49px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #852F34;
+    border-radius: 30px;
+    margin-right: 15px;
+}
