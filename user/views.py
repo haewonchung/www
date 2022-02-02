@@ -36,6 +36,7 @@ def sign_up_view(request):
                 return redirect('/sign-in')
 
 
+
 def sign_in_view(request):
     return render(request, 'user/sign-in.html')
 
