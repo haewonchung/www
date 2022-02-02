@@ -1,25 +1,31 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <script defer src="{% static 'js/preference.css' %}"></script>
-
-</head>
-
-<body>
-    <div class="login">
+{% block title %}
+    선호조사
+{% endblock %}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{##}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta http-equiv="X-UA-Compatible" content="IE=edge">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <link rel="stylesheet" href="{% static 'css/style.css' %}">#}
+{#    <script defer src="{% static 'js/preference.css' %}"></script>#}
+{##}
+{#</head>#}
+{##}
+{#<body>#}
+{% block content %}
+<div class="login">
         <div class="preference">
             당신의 취향은 무엇인가요?
         </div>
         <form class="login-form" action="" method="post">
+            {% csrf_token %}
             <div class="login-login-form__title">
                 <p>나는 이런 것을 선호해요.</p>
-                <img src="../../static/images/preference.png" alt="preference">
+                <img src="{% static 'images/logo.png' %}" alt="preference">
             </div>
             <div class="login-form__checkbox">
                 <div class="login-form__box">
@@ -180,6 +186,7 @@
             <input class="login-form__btn" value="와인 추천 받기" type="submit">
         </form>
     </div>
-</body>
-
-</html>
+{% endblock %}
+{#</body>#}
+{##}
+{#</html>#}
