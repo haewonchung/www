@@ -72,6 +72,7 @@ def sign_in_view(request):
             return render(request, 'user/sign-in.html')
 
 
+
 def preference_view(request):
     if request.method=="GET":
         return render(request, 'user/preference.html')
