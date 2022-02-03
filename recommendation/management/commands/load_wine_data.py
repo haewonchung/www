@@ -16,16 +16,16 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        # Show this if the data already exist in the database
+        # 데이터베이스 내에 데이터가 이미 있는 경우
         # if Wine.objects.exists():
         #     print('Wine data already loaded...exiting.')
         #     print(ALREDY_LOADED_ERROR_MESSAGE)
         #     return
 
-        # Show this before loading the data into the database
+        # 데이터 로딩 전
         print("Loading Wine data")
 
-        # Code to load the data into database
+        # 데이터 베이스에 데이터 저장하기
         for row in DictReader(open('./Wine.csv')):
             wine = Wine(name=row['Name'], type=row['Type'], region=row['Region'], country=row['Country'],
                         rating=float(row['Rating']), primary_flavors=row['Flavor'], comment=row['Comment'], purchase_link=row['Link'])
