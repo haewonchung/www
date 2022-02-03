@@ -319,8 +319,6 @@ input[type="checkbox"]:checked+label {
 
 body {
     background-color: var(--main);
-<<<<<<< Updated upstream
-=======
 }
 
 #body {
@@ -558,5 +556,4 @@ hr {
     color: var(--main);
     font-size: 0.95vw;
     font-weight: bold;
->>>>>>> Stashed changes
 }
