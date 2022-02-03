@@ -11,15 +11,22 @@
         </div>
 
         <form class="login-form" action="" method="post">
+            {% csrf_token %}
             <img class="login-form__img" src="{% static 'images/wine-glass1.png' %}" alt="wine-glass">
-            <input type="text" name="username" class="login-form__input" placeholder="아이디를 입력하세요. ex)world@wonder.com" required>
+
+            <input type="email" name="username" class="login-form__input" placeholder="아이디를 입력하세요. ex)world@wonder.com" required>
             <input type="password" name="password" class="login-form__input" placeholder="비밀번호를 입력하세요." required maxlength="16">
-            <input type="password" name="password" class="login-form__input" placeholder="비밀번호를 다시 한번 입력하세요." required maxlength="16">
-            <input type="password" name="password" class="login-form__input" placeholder="닉네임을 입력하세요." required>
+            <input type="password" name="password2" class="login-form__input" placeholder="비밀번호를 다시 한번 입력하세요." required maxlength="16">
+            <input type="text" name="nickname" class="login-form__input" placeholder="닉네임을 입력하세요." required>
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
             <input class="login-form__btn" value="다음 단계" type="submit">
             <div class="login-form__bottom">
                 <a href="#" class="login-form__a">아이디 / 비밀번호 찾기</a>
-                <a href="#" class="login-form__a">로그인</a>
+                <a href="/sign-in" class="login-form__a">로그인</a>
             </div>
         </form>
     </div>

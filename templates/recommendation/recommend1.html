@@ -1,42 +1,43 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block title %}
-    추천 와인
-{% endblock %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="recommend.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body id="body">
     <div class="header-button">
         <div class="logo">
-            <img src="{% static 'images/header-logo.png' %}" alt="">
-            <img src="C:\Users\김미지\Desktop\www\static\images\header-logo.png" alt="">
+            <img src="/static/images/header-logo.png" alt="">
         </div>
-
         <div class="upright-button">
             <div class="all-wine-inform">
                 <p style="color: white;">전체 와인 정보</p>
             </div>
             <div class="my-pick">
-                <img src="{% static 'images/bookmark2_white.png' %}" alt="bookmark">
+                <img src="/static/images/bookmark2_white.png" alt="bookmark">
                 <p style="color: white">나의 PICK</p>
             </div>
             <div class="logout">
                 <p style="color: white">로그아웃</p>
             </div>
         </div>
-
     </div>
     <main class="main">
         <div class="nickname">
             <div class="nickname-contents">
-                <p>{user.nickname} 님의 추천 와인 </p>
-                <img src="{% static 'images/bx_bx-donate-heart.png' %}" alt="rec-heart">
+                <p>님의 추천 와인 </p>
+                <img src="/static/images/bx_bx-donate-heart.png" alt="rec-heart">
             </div>
-            <hr>
+
         </div>
         <div class="main-wines">
             <div class="main-wines__wine">
                 <div class="img-wrapper">
-                    <a><img class="wrap-img" src="{% static 'images/wine.png' %}" alt="wine" onclick=""></a>
+                    <a><img class="wrap-img" src="/static/images/wine.png" alt="wine" onclick=""></a>
                     <div class="detail-page">
                         <p style="color: white" onclick="">상세페이지 가기</p>
                     </div>
@@ -47,14 +48,14 @@
                         <p>Napa Valley, United States</p>
                     </div>
                     <div class="main-wines__img">
-                        <img class="img1" id='save{{wine}}' src="{% static 'images/bookmark1.png' %}" alt="{{wine}}" onclick=save(this.alt)>
-                        <img class="img2" id='save{{wine}}' src="{% static 'images/bookmark2.png' %}" alt="{{wine}}" onclick=save(this.alt)>
+                        <img class="img1" id='save{{wine}}' src="/static/images/bookmark1.png" alt="{{wine}}" onclick=save(this.alt)>
+                        <img class="img2" id='save{{wine}}' src="../recommend/bookmark2.png" alt="{{wine}}" onclick=save(this.alt)>
                     </div>
                 </div>
             </div>
             <div class="main-wines__wine">
                 <div class="img-wrapper">
-                    <a><img class="wrap-img" src="{% static 'images/wine.png' %}" alt="wine" onclick=""></a>
+                    <a><img class="wrap-img" src="/static/images/wine.png" alt="wine" onclick=""></a>
                     <div class="detail-page">
                         <p style="color: white" onclick="">상세페이지 가기</p>
                     </div>
@@ -65,14 +66,14 @@
                         <p>Napa Valley, United States</p>
                     </div>
                     <div class="main-wines__img">
-                        <img class="img1" id='save{{wine}}' src="{% static 'images/bookmark1.png' %}" alt="{{wine}}" onclick=save(this.alt)>
-                        <img class="img2" id='save{{wine}}' src="{% static 'images/bookmark2.png' %}" alt="{{wine}}" onclick=save(this.alt)>
+                        <img class="img1" id='save{{wine}}' src="/static/images//bookmark1.png" alt="{{wine}}" onclick=save(this.alt)>
+                        <img class="img2" id='save{{wine}}' src="/static/images//bookmark2.png" alt="{{wine}}" onclick=save(this.alt)>
                     </div>
                 </div>
             </div>
             <div class="main-wines__wine">
                 <div class="img-wrapper">
-                    <a><img class="wrap-img" src="{% static 'images/wine.png' %}" alt="wine" onclick=""></a>
+                    <a><img class="wrap-img" src="/static/images/wine.png" alt="wine" onclick=""></a>
                     <div class="detail-page">
                         <p style="color: white" onclick="">상세페이지 가기</p>
                     </div>
@@ -83,14 +84,14 @@
                         <p>Napa Valley, United States</p>
                     </div>
                     <div class="main-wines__img">
-                        <img class="img1" id='save{{wine}}' src="{% static 'images/bookmark1.png'%}" alt="{{wine}}" onclick=save(this.alt)>
-                        <img class="img2" id='save{{wine}}' src="{% static 'images/bookmark2.png' %}" alt="{{wine}}" onclick=save(this.alt)>
+                        <img class="img1" id='save{{wine}}' src="/static/images/bookmark1.png" alt="{{wine}}" onclick=save(this.alt)>
+                        <img class="img2" id='save{{wine}}' src="/static/images/bookmark2.png" alt="{{wine}}" onclick=save(this.alt)>
                     </div>
                 </div>
             </div>
             <div class="main-wines__wine">
                 <div class="img-wrapper">
-                    <a><img class="wrap-img" src="{% static 'images/wine.png' %}" alt="wine" onclick=""></a>
+                    <a><img class="wrap-img" src="/static/images/wine.png" alt="wine" onclick=""></a>
                     <div class="detail-page">
                         <p style="color: white" onclick="">상세페이지 가기</p>
                     </div>
@@ -101,14 +102,12 @@
                         <p>Napa Valley, United States</p>
                     </div>
                     <div class="main-wines__img">
-                        <img class="img1" id='save{{wine}}' src="{% static 'images/bookmark1.png' %}" alt="{{wine}}" onclick=save(this.alt)>
-                        <img class="img2" id='save{{wine}}' src="{% static 'images/bookmark2.png' %}" alt="{{wine}}" onclick=save(this.alt)>
+                        <img class="img1" id='save{{wine}}' src="/static/images/bookmark1.png" alt="{{wine}}" onclick=save(this.alt)>
+                        <img class="img2" id='save{{wine}}' src="/static/images/bookmark2.png" alt="{{wine}}" onclick=save(this.alt)>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-{% endblock %}
-{#</body>#}
-{##}
-{#</html>#}
+</body>
+</html>
