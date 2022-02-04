@@ -15,9 +15,9 @@ class UserProfile(models.Model):
         db_table = "user_profile"
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    body = models.IntegerField()
-    tannin = models.IntegerField()
-    acidity = models.IntegerField()
-    sweetness = models.IntegerField()
+    body = models.FloatField()
+    tannin = models.FloatField()
+    acidity = models.FloatField()
+    sweetness = models.FloatField()
 
 
