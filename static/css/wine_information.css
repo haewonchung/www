@@ -104,6 +104,9 @@
     margin-right: 15px;
 }
 
+/*윗부분까지 공통*/
+/*아랫부분부터 style.css에 추가*/
+
 .information-part {
     width: 1700px;
     margin: 0 auto;

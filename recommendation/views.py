@@ -17,5 +17,5 @@ def main(request):
     wines = Wine.objects.filter(region='Napa Valley')  # 일단은 유저 추천 대신 필터로 적용해둠
     return render(request, 'recommendation/recommend.html', {'wines': wines})
 
-# def wineinfo(request,id):
-# return render(request,'wine_infromation/wine_information.html')
+def wineinfo(request,id):
+    return render(request,'wine_infromation/wine_information.html')

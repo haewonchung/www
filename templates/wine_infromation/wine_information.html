@@ -1,83 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!--프론트엔드 맞추기-->
-    <title>World Wonder Wine</title>
-    <link href="/static/css/wine_information.css" rel="stylesheet">
-    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-</head>
-<body>
-<div class="header-button">
-    <div class="logo">
-        <img src="/static/images/header-logo.png" alt="headerlogoimg">
-    </div>
-    <div class="upright-button">
-        <div class="all-wine-inform">
-            <p style="color: white;">전체 와인 정보</p>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    와인정보
+{% endblock %}
+{% block content %}
+    <div class="header-button">
+        <div class="logo">
+            <img src="{% static 'images/header-logo.png' %}" alt="headerlogoimg">
         </div>
-        <div class="my-pick">
-            <img src="/static/images/bookmark2_white.png" alt="bookmark">
-            <p style="color: white">나의 PICK</p>
-        </div>
-        <div class="logout">
-            <p style="color: white">로그아웃</p>
+        <div class="upright-button">
+            <div class="all-wine-inform">
+                <p style="color: white;">전체 와인 정보</p>
+            </div>
+            <div class="my-pick">
+                <img src="{% static 'images/bookmark2_white.png' %}" alt="bookmark">
+                <p style="color: white">나의 PICK</p>
+            </div>
+            <div class="logout">
+                <p style="color: white">로그아웃</p>
+            </div>
         </div>
     </div>
-</div>
-<div class="information-part">
-    <div>
-        <img src="https://253qv1sx4ey389p9wtpp9sj0-wpengine.netdna-ssl.com/wp-content/uploads/2021/10/La-Co%CC%82te-aux-Enfants_Bollinger_credit_Collection_Bollinger-1280x1920-1.jpg" alt="와인 이미지를 넣어주세요" class="wine-photo">
-    </div>
-    <div class="body-right">
-        <div class="wine-inform-content">
-            <div class="origin-test">
-                <div>
-                    <p style="font-size: 30px"><b>origin</b></p>
-                    <div class="origin">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" alt=""
-                             style="width: 100px; height: 100px; border-radius: 70px">
-                        <div class="region">
-                            <p><b>region location</b></p>
-                            <p><b>country</b></p>
+    <div class="information-part">
+        <div>
+            <img src="https://253qv1sx4ey389p9wtpp9sj0-wpengine.netdna-ssl.com/wp-content/uploads/2021/10/La-Co%CC%82te-aux-Enfants_Bollinger_credit_Collection_Bollinger-1280x1920-1.jpg"
+                 alt="와인 이미지를 넣어주세요" class="wine-photo">
+        </div>
+        <div class="body-right">
+            <div class="wine-inform-content">
+                <div class="origin-test">
+                    <div>
+                        <p style="font-size: 30px"><b>origin</b></p>
+                        <div class="origin">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" alt=""
+                                 style="width: 100px; height: 100px; border-radius: 70px">
+                            <div class="region">
+                                <p><b>region location</b></p>
+                                <p><b>country</b></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="test-profile">
+                        <p style="font-size: 30px"><b>Test-Profile</b></p>
+                    </div>
+                </div>
+                <hr style="width: 100%">
+                <div class="wine-rating">
+                    <div>
+                        <p style="font-size: 30px"><b>Wine Type</b></p>
+                        <div class="wine-type">
+                            <i class="fas fa-wine-glass-alt" style="height: 80px; width: 55px; color: firebrick"></i>
+                            <p style="font-size: 32px; margin-left: 20px"><b>Red</b></p>
+                        </div>
+                    </div>
+                    <div>
+                        <p style="font-size: 30px"><b>Ratings</b></p>
+                        <div class="rating">
+                            <i class="fas fa-star" style="height: 80px; width: 55px; color: gold"></i>
+                            <p style="font-size: 32px; margin-left: 20px; color: darkgoldenrod;"><b>4.8 /5.0</b></p>
                         </div>
                     </div>
                 </div>
-                <div class="test-profile">
-                    <p style="font-size: 30px"><b>Test-Profile</b></p>
-                </div>
-            </div>
-            <hr style="width: 100%">
-            <div class="wine-rating">
+                <hr style="width: 100%">
                 <div>
-                    <p style="font-size: 30px"><b>Wine Type</b></p>
-                    <div class="wine-type">
-                        <i class="fas fa-wine-glass-alt" style="height: 80px; width: 55px; color: firebrick"></i>
-                        <p style="font-size: 32px; margin-left: 20px"><b>Red</b></p>
+                    <p style="font-size: 30px"><b>Purchase Link</b></p>
+                    <div>
+                        <button type="button" class="navyBtn" onClick="window.open('')">Buy</button>
                     </div>
                 </div>
-                <div>
-                    <p style="font-size: 30px"><b>Ratings</b></p>
-                    <div class="rating">
-                        <i class="fas fa-star" style="height: 80px; width: 55px; color: gold"></i>
-                        <p style="font-size: 32px; margin-left: 20px; color: darkgoldenrod;"><b>4.8 /5.0</b></p>
-                    </div>
+                <hr style="width: 100%">
+                <div class="wine-comment">
+                    <p style="font-size: 30px"><b>Wine comment</b></p>
+                    <p class="wine-comment" style="font-size: 24px">{와인 한줄평}</p>
                 </div>
-            </div>
-            <hr style="width: 100%">
-            <div>
-                <p style="font-size: 30px"><b>Purchase Link</b></p>
-                <div>
-                    <button type="button" class="navyBtn" onClick="window.open('')">Buy</button>
-                </div>
-            </div>
-            <hr style="width: 100%">
-            <div class="wine-comment">
-                <p style="font-size: 30px"><b>Wine comment</b></p>
-                <p class="wine-comment" style="font-size: 24px">{와인 한줄평}</p>
             </div>
         </div>
     </div>
-</div>
-</body>
-</html>
+{% endblock %}
