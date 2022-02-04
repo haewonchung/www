@@ -22,7 +22,6 @@
                 <p style="color: white">로그아웃</p>
             </div>
         </div>
-
     </div>
     <main class="main">
         <div class="nickname">
@@ -32,7 +31,9 @@
             </div>
             <hr>
         </div>
+
         <div class="main-wines">
+            {% for wine in wines %}
             <div class="main-wines__wine">
                 <div class="img-wrapper">
                     <a><img class="wrap-img" src="{% static 'images/wine.png' %}" alt="wine" onclick=""></a>
@@ -42,72 +43,16 @@
                 </div>
                 <div class="main-wines__desc">
                     <div>
-                        <p>Carbernet Sauvignon 2018</p>
-                        <p>Napa Valley, United States</p>
+                        <p>{{ wine.name }}</p>
+                        <p>{{ wine.region }}</p>
                     </div>
                     <div class="main-wines__img">
-                        <img class="img1" id='save{{wine}}' src="{% static 'images/bookmark1.png' %}" alt="{{wine}}" onclick=save(this.alt)>
-                        <img class="img2" id='save{{wine}}' src="{% static 'images/bookmark2.png' %}" alt="{{wine}}" onclick=save(this.alt)>
+                        <img class="img1" id='save' src="{% static 'images/bookmark1.png' %}" alt="" onclick=save(this.alt)>
+                        <img class="img2" id='save' src="{% static 'images/bookmark2.png' %}" alt="" onclick=save(this.alt)>
                     </div>
                 </div>
             </div>
-            <div class="main-wines__wine">
-                <div class="img-wrapper">
-                    <a><img class="wrap-img" src="{% static 'images/wine.png' %}" alt="wine" onclick=""></a>
-                    <div class="detail-page">
-                        <p style="color: white" onclick="">상세페이지 가기</p>
-                    </div>
-                </div>
-                <div class="main-wines__desc">
-                    <div>
-                        <p>Carbernet Sauvignon 2018</p>
-                        <p>Napa Valley, United States</p>
-                    </div>
-                    <div class="main-wines__img">
-                        <img class="img1" id='save{{wine}}' src="{% static 'images/bookmark1.png' %}" alt="{{wine}}" onclick=save(this.alt)>
-                        <img class="img2" id='save{{wine}}' src="{% static 'images/bookmark2.png' %}" alt="{{wine}}" onclick=save(this.alt)>
-                    </div>
-                </div>
-            </div>
-            <div class="main-wines__wine">
-                <div class="img-wrapper">
-                    <a><img class="wrap-img" src="{% static 'images/wine.png' %}" alt="wine" onclick=""></a>
-                    <div class="detail-page">
-                        <p style="color: white" onclick="">상세페이지 가기</p>
-                    </div>
-                </div>
-                <div class="main-wines__desc">
-                    <div>
-                        <p>Carbernet Sauvignon 2018</p>
-                        <p>Napa Valley, United States</p>
-                    </div>
-                    <div class="main-wines__img">
-                        <img class="img1" id='save{{wine}}' src="{% static 'images/bookmark1.png'%}" alt="{{wine}}" onclick=save(this.alt)>
-                        <img class="img2" id='save{{wine}}' src="{% static 'images/bookmark2.png' %}" alt="{{wine}}" onclick=save(this.alt)>
-                    </div>
-                </div>
-            </div>
-            <div class="main-wines__wine">
-                <div class="img-wrapper">
-                    <a><img class="wrap-img" src="{% static 'images/wine.png' %}" alt="wine" onclick=""></a>
-                    <div class="detail-page">
-                        <p style="color: white" onclick="">상세페이지 가기</p>
-                    </div>
-                </div>
-                <div class="main-wines__desc">
-                    <div>
-                        <p>Carbernet Sauvignon 2018</p>
-                        <p>Napa Valley, United States</p>
-                    </div>
-                    <div class="main-wines__img">
-                        <img class="img1" id='save{{wine}}' src="{% static 'images/bookmark1.png' %}" alt="{{wine}}" onclick=save(this.alt)>
-                        <img class="img2" id='save{{wine}}' src="{% static 'images/bookmark2.png' %}" alt="{{wine}}" onclick=save(this.alt)>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </main>
 {% endblock %}
-{#</body>#}
-{##}
-{#</html>#}
