@@ -19,6 +19,6 @@ def main(request):
 
 
 @login_required()
-def detail(request):
+def wine_detail(request, id):
     if request.method == "GET":
         return render(request, "recommendation/wine_information.html")
