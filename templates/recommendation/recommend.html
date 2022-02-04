@@ -8,7 +8,6 @@
     <div class="header-button">
         <div class="logo">
             <img src="{% static 'images/header-logo.png' %}" alt="">
-            <img src="C:\Users\김미지\Desktop\www\static\images\header-logo.png" alt="">
         </div>
 
         <div class="upright-button">
@@ -28,7 +27,7 @@
     <main class="main">
         <div class="nickname">
             <div class="nickname-contents">
-                <p>{user.nickname} 님의 추천 와인 </p>
+                <p>{{ user.nickname }} 님의 추천 와인 </p>
                 <img src="{% static 'images/bx_bx-donate-heart.png' %}" alt="rec-heart">
             </div>
             <hr>
