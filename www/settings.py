@@ -126,6 +126,7 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'user.User'
+LOGIN_URL = '/sign-in/'  # default '/accounts/login/' 에서 우리 '/sign-in/'으로
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'  # To allow collectstatic to automatically put static files in bucket

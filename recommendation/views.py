@@ -19,12 +19,14 @@ def wine_recommend(request):
     return render(request, 'recommendation/wine_recommend.html', {'wines': wines})
 
 
+@login_required
 def wine_all(request):
+    wines = Wine.objects.all()
     if request.method == "GET":
-        return render(request, "recommendation/wine_all.html")
+        return render(request, "recommendation/wine_all.html", {'wines': wines})
 
 
-@login_required()
+@login_required
 def wine_detail(request, id):
     if request.method == "GET":
         return render(request, "recommendation/wine_detail.html")

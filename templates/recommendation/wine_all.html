@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    전체 와인 리스트
+{% endblock %}
+{% block content %}
+<div class="header-button">
+    <div class="logo">
+        <img src="{% static 'images/header-logo.png' %}" alt="">
+    </div>
+    <div class="upright-button">
+        <button class="all-wine-inform" onclick="location.href='/wine_list'">전체 와인 정보</button>
+        <button class="my-pick" onclick="location.href='/my-pic'">
+            <img src="{% static 'images/bookmark2_white.png' %}" alt="bookmark">나의 PICK</button>
+        <button class="logout" onclick="location.href='/logout'">로그아웃</button>
+    </div>
+</div>
+    <main class="main">
+        <div class="nickname">
+            <div class="nickname-contents">
+                <p> 전체 와인 리스트 </p>
+                <img src="{% static 'images/wine-glass1.png' %}" alt="rec-heart">
+            </div>
+            <hr>
+        </div>
+
+        <div class="main-wines">
+            {% for wine in wines %}
+            <div class="main-wines__wine">
+                <div class="img-wrapper">
+                    <a><img class="wrap-img" src="{% static 'images/wine.png' %}" alt="wine" onclick=""></a>
+                    <div class="detail-page">
+                        <p style="color: white" onclick>
+                            <a href="/detail">상세페이지 가기</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="main-wines__desc">
+                    <div>
+                        <p>{{ wine.name }}</p>
+                        <p>{{ wine.region }}</p>
+                    </div>
+                    <div class="main-wines__img">
+                        <img class="img1" id='save' src="{% static 'images/bookmark1.png' %}" alt="" onclick=save(this.alt)>
+                        <img class="img2" id='save' src="{% static 'images/bookmark2.png' %}" alt="" onclick=save(this.alt)>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}
