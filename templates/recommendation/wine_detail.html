@@ -10,13 +10,10 @@
         <img src="{% static 'images/header-logo.png' %}" alt="">
     </div>
     <div class="upright-button">
-        <button class="all-wine-inform" onclick="allWine()">전체 와인 정보</button>
-
-        <!-- <p style="color: white">나의 PICK</p> -->
-        <button class="my-pick" onclick="myPick()"><img src="{% static 'images/bookmark2_white.png' %}" alt="bookmark">나의 PICK</button>
-
-        <button class="logout" onclick="logout()">로그아웃</button>
-
+        <button class="all-wine-inform" onclick="location.href='/wine_list'">전체 와인 정보</button>
+        <button class="my-pick" onclick="location.href='/my-pic'">
+            <img src="{% static 'images/bookmark2_white.png' %}" alt="bookmark">나의 PICK</button>
+        <button class="logout" onclick="location.href='/logout'">로그아웃</button>
     </div>
 </div>
     <div class="information-part">
