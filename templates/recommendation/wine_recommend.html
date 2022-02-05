@@ -5,26 +5,17 @@
     추천 와인
 {% endblock %}
 {% block content %}
-    <div class="header-button">
-        <div class="logo">
-            <img src="{% static 'images/header-logo.png' %}" alt="">
-        </div>
-
-        <div class="upright-button">
-            <div class="all-wine-inform">
-                <p style="color: white;">전체 와인 정보</p>
-            </div>
-            <div class="my-pick">
-                <img src="{% static 'images/bookmark2_white.png' %}" alt="bookmark">
-                <p style="color: white">나의 PICK</p>
-            </div>
-            <div class="logout">
-                <p style="color: white">
-                    <a href="/logout"> 로그아웃 </a>
-                </p>
-            </div>
-        </div>
+<div class="header-button">
+    <div class="logo">
+        <img src="{% static 'images/header-logo.png' %}" alt="">
     </div>
+    <div class="upright-button">
+        <button class="all-wine-inform" onclick="location.href='/wine-all'">전체 와인 정보</button>
+        <button class="my-pick" onclick="location.href='/my-pic'">
+            <img src="{% static 'images/bookmark2_white.png' %}" alt="bookmark">나의 PICK</button>
+        <button class="logout" onclick="location.href='/logout'">로그아웃</button>
+    </div>
+</div>
     <main class="main">
         <div class="nickname">
             <div class="nickname-contents">
