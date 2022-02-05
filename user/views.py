@@ -1,4 +1,8 @@
+import numpy as np
+import pandas as pd
 from django.shortcuts import render, redirect
+from sklearn.metrics.pairwise import cosine_similarity
+
 from .models import User, UserProfile
 from django.contrib.auth import get_user_model  # 사용자가 데이터베이스 안에 있는지 검사
 from django.contrib import auth
@@ -93,3 +97,19 @@ def preference_view(request):
 def logout(request):
     auth.logout(request)  # request에 값이 있는지session에서 알아서 찾아내준다.
     return redirect("/sign-in")
+
+
+@login_required()
+def recommend(request):
+    df = pd.read_csv('Wine.csv')
+    user = request.user
+    user_data = UserProfile.objects.get(user=user)
+    x_data = df.drop(columns=['Name', 'Link', 'Country', 'Type', 'Flavor', 'Comment', 'Region', ], axis=1)  # 문자열빼고
+    x_data = x_data.astype(np.float32)  # 32비트로 바꿔줘야 keras에서 알아듣는다.
+    wine_based_collab = cosine_similarity(user_data, x_data)
+    wine_based_collab = pd.DataFrame(wine_based_collab)
+    result = (wine_based_collab[1].sort_values(ascending=False)[1:2]).index
+    result = str(result).split("[")
+    result = int(result[1].split()[0].split("]")[0])
+    final = df["Index"][result]
+    return final
