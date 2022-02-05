@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from .models import User, UserProfile
-from django.http import HttpResponse
 from django.contrib.auth import get_user_model  # 사용자가 데이터베이스 안에 있는지 검사
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -38,8 +37,8 @@ def sign_up_view(request):
 
 def sign_in_view(request):
     if request.method == "POST":
-        username = request.POST.get("username", '')
-        password = request.POST.get("password", '')
+        username = request.POST.get("username", None)
+        password = request.POST.get("password", None)
 
         me = auth.authenticate(request, username=username, password=password)  # username과 password가 같은 사용자를 찾아라
         print(me)  # me(사용자가 있다면 저장된 사용자의 정보가져옴/없다면 None)
@@ -59,7 +58,7 @@ def sign_in_view(request):
             else:  # user_id값이 user_profile에 없다면 prefer로 이동
                 return redirect('/prefer')
         else:  # 사용자가 없다면(None) 다시 로그인창 띄우기
-            return render(request, 'user/sign-in.html', {'error': '사용자이름 혹은 패스워드를 확인해 주세요'})
+            return render(request, 'user/sign-in.html', {'error': '사용자 이름 혹은 패스워드를 확인해 주세요'})
     elif request.method == 'GET':
         user = request.user.is_authenticated
         if user:  # 로그인되면 prefer부분이 아니라 base로 간다
@@ -68,6 +67,7 @@ def sign_in_view(request):
             return render(request, 'user/sign-in.html')
 
 
+@login_required
 def preference_view(request):
     if request.method == "GET":
         return render(request, 'user/preference.html')

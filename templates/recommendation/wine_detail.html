@@ -5,23 +5,20 @@
     와인정보
 {% endblock %}
 {% block content %}
-    <div class="header-button">
-        <div class="logo">
-            <img src="{% static 'images/header-logo.png' %}" alt="headerlogoimg">
-        </div>
-        <div class="upright-button">
-            <div class="all-wine-inform">
-                <p style="color: white;">전체 와인 정보</p>
-            </div>
-            <div class="my-pick">
-                <img src="{% static 'images/bookmark2_white.png' %}" alt="bookmark">
-                <p style="color: white">나의 PICK</p>
-            </div>
-            <div class="logout">
-                <p style="color: white">로그아웃</p>
-            </div>
-        </div>
+<div class="header-button">
+    <div class="logo">
+        <img src="{% static 'images/header-logo.png' %}" alt="">
     </div>
+    <div class="upright-button">
+        <button class="all-wine-inform" onclick="allWine()">전체 와인 정보</button>
+
+        <!-- <p style="color: white">나의 PICK</p> -->
+        <button class="my-pick" onclick="myPick()"><img src="{% static 'images/bookmark2_white.png' %}" alt="bookmark">나의 PICK</button>
+
+        <button class="logout" onclick="logout()">로그아웃</button>
+
+    </div>
+</div>
     <div class="information-part">
         <div>
             <img src="https://253qv1sx4ey389p9wtpp9sj0-wpengine.netdna-ssl.com/wp-content/uploads/2021/10/La-Co%CC%82te-aux-Enfants_Bollinger_credit_Collection_Bollinger-1280x1920-1.jpg"

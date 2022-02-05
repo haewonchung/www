@@ -339,6 +339,8 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    z-index: 1;
+    transition: all .2s
 }
 
 .logo {
@@ -370,10 +372,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 15px;
     background: #852F34;
     border-radius: 30px;
+    margin-right: 15px;
     cursor: pointer;
+    color: white;
+    font-size: medium;
+    border: none;
 }
 
 .logout {
@@ -384,7 +389,11 @@ body {
     align-items: center;
     background: #852F34;
     border-radius: 30px;
+    margin-right: 15px;
     cursor: pointer;
+    color: white;
+    font-size: medium;
+    border: none;
 }
 
 .my-pick {
@@ -397,6 +406,9 @@ body {
     border-radius: 30px;
     margin-right: 15px;
     cursor: pointer;
+    color: white;
+    font-size: medium;
+    border: none;
 }
 
 .my-pick img {
@@ -558,6 +570,7 @@ hr {
     font-weight: bold;
 }
 
+
 /*wine_information*/
 
 .information-part {
@@ -589,7 +602,6 @@ hr {
 .region {
     font-size: 22px;
     margin-left: 20px;
-
 }
 
 .wine-type {
@@ -615,7 +627,6 @@ hr {
     display: flex;
     flex-direction: row;
     justify-content: start;
-
     background-color: antiquewhite;
 }
 

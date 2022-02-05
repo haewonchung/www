@@ -41,5 +41,3 @@ function check4(element) {
 
     element.checked = true;
 }
-
-
