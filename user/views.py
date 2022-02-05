@@ -37,8 +37,8 @@ def sign_up_view(request):
 
 def sign_in_view(request):
     if request.method == "POST":
-        username = request.POST.get("username", None)
-        password = request.POST.get("password", None)
+        username = request.POST.get("username", '')
+        password = request.POST.get("password", '')
 
         me = auth.authenticate(request, username=username, password=password)  # username과 password가 같은 사용자를 찾아라
         print(me)  # me(사용자가 있다면 저장된 사용자의 정보가져옴/없다면 None)
@@ -76,13 +76,8 @@ def preference_view(request):
         tannin = request.POST.get('chk2')
         acidity = request.POST.get('chk3')
         sweetness = request.POST.get('chk4')
-        # print(body)
-        # print(tannin)
-        # print(acidity)
-        # print(sweetness)
         user = request.user
-        # print(user)
-        # UserProfile에 저잗
+        # UserProfile에 저장
         my_prefer = UserProfile()
         my_prefer.user = user
         my_prefer.body = body
