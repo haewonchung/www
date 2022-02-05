@@ -25,8 +25,8 @@ def sign_up_view(request):
             return render(request, 'user/sign-up.html', {'error': '패스워드를 확인해주세요'})
         else:
             # 이미 html에서 requried를 통해 해줌
-            # if nickname=='' or password=='': #닉네임과 password 필수입력
-            #     return render(request, 'user/sign-up.html', {'error': '사용자 닉네임과 비밀번호는 필수값 입니다'})
+            if nickname == '' or password == '':  # 닉네임과 password 필수입력
+                return render(request, 'user/sign-up.html', {'error': '사용자 닉네임과 비밀번호는 필수값 입니다'})
             exist_user = get_user_model().objects.filter(username=username)  # 같은 이메일은 사용불가
             if exist_user:  # 중복된 이메일일경우
                 return render(request, 'user/sign-up.html', {'error': '사용자가 존재합니다'})

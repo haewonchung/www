@@ -9,30 +9,30 @@ function save(value) {
     }
     svcnt++;
 }
-//
-// // header 버튼 눌러서 페이지 이동
-//
-// function allWine() {
-//
-//     window.location.href = '/wine-all';
-//
-// }
-//
-// function myPick() {
-//
-//     window.location.href = '/my-pick';
-// }
-//
-// function logout() {
-//
-//     window.location.href = '/logout';
-//
-// }
+
+// header 버튼 눌러서 페이지 이동
+
+function allWine() {
+
+    window.location.href = '/wine-all';
+
+}
+
+function myPick() {
+
+    window.location.href = '/my-pick';
+}
+
+function logout() {
+
+    window.location.href = '/logout';
+
+}
 
 
 // 스크롤 내리면 header 사라짐
 
-var lastScrollTop = 0;
+let lastScrollTop = 0;
 
 $(window).scroll(function() {
     var scrollTop = $(this).scrollTop(); /* 스크롤바 수직 위치를 가져옵니다, 괄호 안에 값(value)이 있을 경우 수직 위치를 정합니다. */
