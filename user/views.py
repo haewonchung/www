@@ -46,11 +46,19 @@ def sign_in_view(request):
         username = request.POST.get("username", '')
         password = request.POST.get("password", '')
 
-        me = auth.authenticate(request, username=username, password=password)  # username과 password가 같은 사용자를 찾아라
-        print(me)  # me(사용자가 있다면 저장된 사용자의 정보가져옴/없다면 None)
+        me = auth.authenticate(request, username=username, password=password)  # username과 password가 같은 사용자를 찾기 없으면 None
 
         if me is not None:  # 사용자가 있다면 로그인
             auth.login(request, me)
+
+            # /prefer로 이동여부
+            user = request.user
+            profile = UserProfile.objects.filter(user=user)
+
+            if profile:  # user_id값이 user_profile에 있다면 prefer건너뛰기
+                return redirect('/')
+            else:  # user_id값이 user_profile에 없다면 prefer로 이동
+                return redirect('/prefer')
         else:  # 사용자가 없다면(None) 다시 로그인창 띄우기
             return render(request, 'user/sign-in.html', {'error': '사용자 이름 혹은 패스워드를 확인해 주세요'})
     elif request.method == 'GET':
