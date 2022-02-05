@@ -36,7 +36,9 @@ def sign_up_view(request):
                 return render(request, 'user/sign-up.html', {'error': '사용자가 존재합니다'})
             else:  # 중복되지 않는 이메일일 경우 db에 저장
                 User.objects.create_user(username=username, password=password, nickname=nickname)
-                return redirect('/sign-in')
+                me = auth.authenticate(request, username=username, password=password)
+                auth.login(request, me)
+                return redirect('/prefer')
 
 
 def sign_in_view(request):
@@ -49,18 +51,6 @@ def sign_in_view(request):
 
         if me is not None:  # 사용자가 있다면 로그인
             auth.login(request, me)
-
-            # /prefer로 이동여부
-            user = request.user
-            print("유저정보 가져오기:", user)
-
-            profile = UserProfile.objects.filter(user=user)
-            print("선호조사 정보존재여부:", profile)
-
-            if profile:  # user_id값이 user_profile에 있다면 prefer건너뛰기
-                return redirect('/')
-            else:  # user_id값이 user_profile에 없다면 prefer로 이동
-                return redirect('/prefer')
         else:  # 사용자가 없다면(None) 다시 로그인창 띄우기
             return render(request, 'user/sign-in.html', {'error': '사용자 이름 혹은 패스워드를 확인해 주세요'})
     elif request.method == 'GET':
