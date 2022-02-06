@@ -28,7 +28,8 @@ class Command(BaseCommand):
         # 데이터 베이스에 데이터 저장하기
         for row in DictReader(open('./Wine.csv')):
             wine = Wine(name=row['Name'], type=row['Type'], region=row['Region'], country=row['Country'],
-                        rating=float(row['Rating']), primary_flavors=row['Flavor'], comment=row['Comment'], purchase_link=row['Link'])
+                        rating=float(row['Rating']), primary_flavors=row['Flavor'], comment=row['Comment'],
+                        purchase_link=row['Link'], image=row['Img'])
             wine.save()
             wine_profile = WineProfile(wine_id=wine.id, body=float(row['Body']), tannin=float(row['Tannic']),
                                        sweetness=float(row['Sweet']), acidity=float(row['Acidic']))
