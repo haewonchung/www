@@ -699,11 +699,6 @@ hr {
     justify-content: center;
 }
 
-.wine-photo {
-    width: 15vw;
-    height: 100%;
-    border-radius: 20px;
-}
 
 .wine-name-origin {
     display: flex;
