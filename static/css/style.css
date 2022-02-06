@@ -661,3 +661,8 @@ hr {
     display: flex;
     flex-direction: row;
 }
+
+#later-link {
+    text-decoration: none;
+    color: white;
+}
