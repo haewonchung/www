@@ -425,7 +425,8 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    min-height: 120vh;
+    margin-top: 27vh;
+    margin-bottom: 5vh;
 }
 
 .nickname {
@@ -464,9 +465,13 @@ hr {
     border-radius: 20px;
     width: 77vw;
     height: 100%;
-    align-items: center;
-    justify-content: space-between;
-    padding: 3vw;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 1vw;
+}
+
+.main-wines>* {
+    margin: 2.1vw;
 }
 
 .main-wines__wine {
@@ -524,7 +529,7 @@ hr {
     display: flex;
     justify-content: space-between;
     margin: 0 1vw;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .main-wines__img {
@@ -667,6 +672,7 @@ hr {
     color: white;
 }
 
+
 /*wine_all&my_pick*/
 
 .preface {
@@ -698,7 +704,6 @@ hr {
     align-items: center;
     justify-content: center;
 }
-
 
 .wine-name-origin {
     display: flex;
