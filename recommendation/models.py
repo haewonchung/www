@@ -17,8 +17,6 @@ class Wine(models.Model):
     comment = models.TextField(null=True)
     purchase_link = models.URLField(max_length=256)
     image = models.URLField(max_length=256, null=True)
-    # vintage = models.IntegerField()
-    # price = models.IntegerField(null=True)
 
 
 class WineProfile(models.Model):
