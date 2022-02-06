@@ -10,20 +10,40 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
             crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-
+    
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% block css %}
     {% endblock %}
     <script defer src="{% static 'js/preference.js' %}"></script>
     <script defer src="{% static 'js/recommend.js' %}"></script>
+    {% comment %} <script>
+        var GLOBAL_PATH = '{{ STATIC_PATH }}'; 
+        </script> {% endcomment %}
+        {% comment %} <script type="text/javascript">
+            DJANGO_STATIC_URL = '{{ STATIC_URL }}';
+        </script> {% endcomment %}
 
+    <script>
+        let cnt = 1
+
+        function save(value) {
+            const id = value
+            if (cnt % 2 === 1) {
+                document.getElementById("save" + id).src = "{% static 'images/bookmark2.png' %}";
+            } else {
+                document.getElementById("save" + id).src = "{% static 'images/bookmark1.png' %}";
+            }
+            cnt++;
+        } 
+    </script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 </head>
 <body>
-{#<body style="background: url('{% static 'images/rec_background.png' %}') no-repeat center center fixed;">#}
-
     {% block content %}
+{#<body style="background: url('{% static 'images/rec_background.png' %}') no-repeat center center fixed;">#}
+{#-> 이렇게 줘야 이미지값이 먹네요 #}
+    
     {% endblock %}
 
 </body>

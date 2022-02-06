@@ -37,4 +37,4 @@ def wine_detail(request, id):
 def my_pic(request, id):
     my_wine = Wine.objects.get(id=id)   # 추후 변경 예정
     if request.method == "GET":
-        return render(request, "recommendation/my_pic.html", {'wine': my_wine})
+        return render(request, "recommendation/my_pick.html", {'wine': my_wine})

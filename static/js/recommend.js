@@ -1,14 +1,14 @@
-let svcnt = 1
+// let svcnt = 1
 
-function save(value) {
-    const id = value
-    if (svcnt % 2 === 1) {
-        document.getElementById("save" + id).src = "{% static 'images/bookmark2.png' %}";
-    } else {
-        document.getElementById("save" + id).src = "{% static 'images/bookmark1.png' %}";
-    }
-    svcnt++;
-}
+// function save(value) {
+//     const id = value
+//     if (svcnt % 2 === 1) {
+//         document.getElementById("save" + id).src = "{% static 'images/bookmark2.png' %}";
+//     } else {
+//         document.getElementById("save" + id).src = "{% static 'images/bookmark1.png' %}";
+//     }
+//     svcnt++;
+// }
 
 // header 버튼 눌러서 페이지 이동
 
