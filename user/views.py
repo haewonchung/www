@@ -123,6 +123,6 @@ def wine_recommend(request):
 
         wine_based_collab = cosine_similarity(df, userdf)  # 유저의 프리퍼런스 행을 수치화한 자료가 들어가서
         wine_based_collab = pd.DataFrame(wine_based_collab)
-        result = (wine_based_collab[0].sort_values(ascending=False)[:10])
+        result = (wine_based_collab[0].sort_values(ascending=False)[:10]).index.values
         print(result)
         return None
