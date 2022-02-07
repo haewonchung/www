@@ -6,7 +6,7 @@ from user.models import User
 
 def home(request):
     user = request.user.is_authenticated
-    print(user)
+    print('user is authenticated:', user)
     if user:  # 사용자가 있으면 main으로
         return redirect('/wine-recommend')
     else:  # 사용자가 없으면 로그인화면으로
@@ -15,8 +15,12 @@ def home(request):
 
 @login_required
 def wine_recommend(request):
-    wines = Wine.objects.filter(region='Napa Valley')  # 일단은 유저 추천 대신 필터로 적용해둠
-    return render(request, 'recommendation/wine_recommend.html', {'wines': wines})
+    me = request.user
+    if me.surveyed:
+        wines = Wine.objects.filter(region='Napa Valley')
+        return render(request, 'recommendation/wine_recommend.html', {'wines': wines})
+    else:
+        return redirect('/prefer')
 
 
 @login_required
