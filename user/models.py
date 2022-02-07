@@ -8,6 +8,7 @@ class User(AbstractUser):
         db_table = "my_user"
 
     nickname = models.CharField(max_length=256, default='')
+    surveyed = models.BooleanField(default=False)
 
 
 class UserProfile(models.Model):
