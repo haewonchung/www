@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.contrib import auth
 from recommendation.models import Wine
 from user.models import User
 
@@ -43,3 +42,24 @@ def my_pic(request, id):
     my_wine = Wine.objects.get(id=id)   # 추후 변경 예정
     if request.method == "GET":
         return render(request, "recommendation/my_pick.html", {'wine': my_wine})
+
+
+def wine_save_toggle(request, wine_id):
+    wine = get_object_or_404(Wine, id=wine_id)
+    # user = request.user
+    # me = User.objects.get(user=user)
+    me = get_object_or_404(User, id=request.user.id)
+
+    check_saved_wine = me.my_pic.filter(id=wine_id)
+
+    if check_saved_wine.exists():
+        me.my_pic.remove(wine)
+        wine.saved_count -= 1
+        wine.save()
+    else:
+        me.my_pic.add(wine)
+        wine.saved_count += 1
+        wine.save()
+
+    return redirect('recommendation:wine-recommend')
+

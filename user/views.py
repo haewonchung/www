@@ -1,12 +1,11 @@
-import numpy as np
-import pandas as pd
 from django.shortcuts import render, redirect
-from sklearn.metrics.pairwise import cosine_similarity
-
 from .models import User, UserProfile
 from django.contrib.auth import get_user_model  # 사용자가 데이터베이스 안에 있는지 검사
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+import numpy as np
+import pandas as pd
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 # Create your views here.
@@ -52,15 +51,15 @@ def sign_in_view(request):
             auth.login(request, me)
 
             # /prefer로 이동여부 (=profile = UserProfile.objects.filter(user=request.user))
-            if me.surveyed:     # prefer survey를 완료했다면 추천 와인으로
+            if me.surveyed:  # prefer survey를 완료했다면 추천 와인으로
                 return redirect('/')
-            else:               # survey를 완료하지 않았다면 /prefer로 이동
+            else:  # survey를 완료하지 않았다면 /prefer로 이동
                 return redirect('/prefer')
-        else:               # 사용자가 없다면(None) 다시 로그인창 띄우기
+        else:  # 사용자가 없다면(None) 다시 로그인창 띄우기
             return render(request, 'user/sign-in.html', {'error': '사용자 이름 혹은 패스워드를 확인해 주세요'})
     elif request.method == 'GET':
         user = request.user.is_authenticated
-        if user:    # 로그인되면 prefer부분이 아니라 base로 간다
+        if user:  # 로그인되면 prefer부분이 아니라 base로 간다
             return redirect('/')
         else:
             return render(request, 'user/sign-in.html')
@@ -77,15 +76,19 @@ def preference_view(request):
         sweetness = request.POST.get('chk4')
         user = request.user
 
-        my_prefer = UserProfile()   # UserProfile에 저장
+        my_prefer = UserProfile()  # UserProfile에 저장
         my_prefer.user = user
         my_prefer.body = body
         my_prefer.tannin = tannin
         my_prefer.acidity = acidity
         my_prefer.sweetness = sweetness
         my_prefer.save()
-        user.surveyed = True      # Preference survey 완료
+
+        user.surveyed = True  # Preference survey 완료
         user.save()
+
+        print('body', user.userprofile.body)
+        print('tannin', user.userprofile.tannin)
         return redirect('/')
 
 
@@ -95,17 +98,31 @@ def logout(request):
     return redirect("/sign-in")
 
 
-@login_required()
-def recommend(request):
-    df = pd.read_csv('Wine.csv')
-    user = request.user
-    user_data = UserProfile.objects.get(user=user)
-    x_data = df.drop(columns=['Name', 'Link', 'Country', 'Type', 'Flavor', 'Comment', 'Region', ], axis=1)  # 문자열빼고
-    x_data = x_data.astype(np.float32)  # 32비트로 바꿔줘야 keras에서 알아듣는다.
-    wine_based_collab = cosine_similarity(user_data, x_data)
-    wine_based_collab = pd.DataFrame(wine_based_collab)
-    result = (wine_based_collab[1].sort_values(ascending=False)[1:2]).index
-    result = str(result).split("[")
-    result = int(result[1].split()[0].split("]")[0])
-    final = df["Index"][result]
-    return final
+def wine_recommend(request):
+    print(1)
+    me = request.user
+    if me.surveyed:
+        df = pd.read_csv("Wine.csv")
+        df = df.drop(
+            columns=['Name', 'Link', 'Country', 'Type', 'Flavor', 'Comment', 'Region', 'Index', 'Rating', 'Img'],
+            axis=1)  # 문자열빼고
+        df = df.astype(np.float32)  # 32비트로 바꿔줘야 keras에서 알아듣는다.
+        userid = request.user.id
+        user_data = UserProfile.objects.get(user_id=userid)
+        userbody = user_data.body
+        usertannin = user_data.tannin
+        useracidity = user_data.acidity
+        usersweetness = user_data.sweetness
+        print(userbody, usertannin, usersweetness, useracidity)
+        print(df)
+        print(user_data)
+        x = np.array([userbody, usertannin, useracidity, usersweetness])
+        userdf_1 = np.tile(x, (100, 1))
+        print(userdf_1)
+        userdf = userdf_1.astype(np.float32)
+
+        wine_based_collab = cosine_similarity(df, userdf)  # 유저의 프리퍼런스 행을 수치화한 자료가 들어가서
+        wine_based_collab = pd.DataFrame(wine_based_collab)
+        result = (wine_based_collab[0].sort_values(ascending=False)[:10])
+        print(result)
+        return None

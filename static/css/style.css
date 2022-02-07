@@ -577,7 +577,7 @@ hr {
 }
 
 
-/*wine_information*/
+/*wine_detail*/
 
 .information-part {
     width: 1700px;
@@ -674,6 +674,36 @@ hr {
     color: white;
 }
 
+/*wine_detail의 안주추천*/
+.food-frame {
+    width: 1700px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    margin-top: 200px;
+}
+.food-body {
+    width: 1700px;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    margin-top: 100px;
+    flex-wrap: wrap;
+}
+.menu {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 170px;
+    margin-left: 100px;
+}
+.food {
+    height: 320px;
+    width: 240px;
+    border-radius: 20px;
+}
+.food-right {
+    width: 170px;
+    margin-left: 20px;
+}
 
 /*wine_all&my_pick*/
 
