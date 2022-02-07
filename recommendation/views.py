@@ -17,15 +17,11 @@ def home(request):
 @login_required
 def wine_recommend(request):
     me = request.user
-    print('me.username:', me.username)
-    print('me.surveyed:', me.surveyed)
     if me.surveyed:
         wines = Wine.objects.filter(region='Napa Valley')
         return render(request, 'recommendation/wine_recommend.html', {'wines': wines})
     else:
         return redirect('/prefer')
-
-    # return render(request, 'recommendation/wine_recommend.html', {'wines': wines})
 
 
 @login_required
