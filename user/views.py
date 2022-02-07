@@ -88,22 +88,17 @@ def preference_view(request):
         my_prefer.sweetness = sweetness
         my_prefer.save()
 
-<<<<<<< Updated upstream
-=======
-        user.surveyed = True      # Preference survey 완료
+        user.surveyed = True  # Preference survey 완료
         user.save()
 
         print('body', user.userprofile.body)
         print('tannin', user.userprofile.tannin)
->>>>>>> Stashed changes
-        return redirect('/')
 
 
 @login_required()
 def logout(request):
     auth.logout(request)  # request에 값이 있는지session에서 알아서 찾아내준다.
     return redirect("/sign-in")
-
 
 # @login_required
 # def wine_recommend(request):
