@@ -97,24 +97,32 @@ def logout(request):
     auth.logout(request)  # request에 값이 있는지session에서 알아서 찾아내준다.
     return redirect("/sign-in")
 
-# @login_required
-# def wine_recommend(request):
-#     me = request.user
-#     if me.surveyed:
-#         df = pd.read_csv('csvfile')
-#         df = df.drop(
-#             columns=['Name', 'Link', 'Country', 'Type', 'Flavor', 'Comment', 'Region', 'Index', 'Rating', 'Img'],
-#             axis=1)  # 문자열빼고
-#         df = df.astype(np.float32)  # 32비트로 바꿔줘야 keras에서 알아듣는다.
-#         # userdf = pd.read_csv('user_profile.csv')
-#         # userdf_1 = userdf.drop(columns=['user__id', 'id'])
-#         userbody = me.userprofile.body
-#         usertannin = me.userprofile.tannin
-#         userdf = [userbody, usertannin]
-#         wine_based_collab = cosine_similarity(df, userdf)  # 유저의 프리퍼런스 행을 수치화한 자료가 들어가서
-#         wine_based_collab = pd.DataFrame(wine_based_collab)
-#         result = (wine_based_collab[0].sort_values(ascending=False)[:10])
-#
-#         return render(request, 'recommendation/wine_recommend.html', {'wines': wines})
-#     else:
-#         return redirect('/prefer')
+
+def wine_recommend(request):
+    print(1)
+    me = request.user
+    if me.surveyed:
+        df = pd.read_csv("Wine.csv")
+        df = df.drop(
+            columns=['Name', 'Link', 'Country', 'Type', 'Flavor', 'Comment', 'Region', 'Index', 'Rating', 'Img'],
+            axis=1)  # 문자열빼고
+        df = df.astype(np.float32)  # 32비트로 바꿔줘야 keras에서 알아듣는다.
+        userid = request.user.id
+        user_data = UserProfile.objects.get(user_id=userid)
+        userbody = user_data.body
+        usertannin = user_data.tannin
+        useracidity = user_data.acidity
+        usersweetness = user_data.sweetness
+        print(userbody, usertannin, usersweetness, useracidity)
+        print(df)
+        print(user_data)
+        x = np.array([userbody, usertannin, useracidity, usersweetness])
+        userdf_1 = np.tile(x, (100, 1))
+        print(userdf_1)
+        userdf = userdf_1.astype(np.float32)
+
+        wine_based_collab = cosine_similarity(df, userdf)  # 유저의 프리퍼런스 행을 수치화한 자료가 들어가서
+        wine_based_collab = pd.DataFrame(wine_based_collab)
+        result = (wine_based_collab[0].sort_values(ascending=False)[:10])
+        print(result)
+        return None

@@ -58,3 +58,4 @@ def wine_save_toggle(request, wine_id):
         wine.save()
 
     return redirect('recommendation:wine-recommend')
+
