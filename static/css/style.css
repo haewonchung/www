@@ -510,6 +510,7 @@ hr {
 }
 
 .wrap-img {
+    height: 20vw;
     transition: filter 0.3s;
 }
 
@@ -587,8 +588,9 @@ hr {
 }
 
 .wine-photo {
-    width: 532px;
-    height: 799px;
+    background-color: aqua;
+    width: 10vw;
+    height: 100%;
     border-radius: 20px;
 }
 
