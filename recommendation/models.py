@@ -39,3 +39,9 @@ class Food(models.Model):
     description = models.TextField()
 
 
+class WineRecommend(models.Model):
+    class Meta:
+        db_table = "user_recommend"
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, limit_choices_to={'surveyed': True})
+    wine = models.ForeignKey(Wine, on_delete=models.CASCADE)
