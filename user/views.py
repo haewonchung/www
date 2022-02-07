@@ -1,12 +1,11 @@
-import numpy as np
-import pandas as pd
 from django.shortcuts import render, redirect
-from sklearn.metrics.pairwise import cosine_similarity
-
 from .models import User, UserProfile
 from django.contrib.auth import get_user_model  # 사용자가 데이터베이스 안에 있는지 검사
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+import numpy as np
+import pandas as pd
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 # Create your views here.
@@ -52,15 +51,15 @@ def sign_in_view(request):
             auth.login(request, me)
 
             # /prefer로 이동여부 (=profile = UserProfile.objects.filter(user=request.user))
-            if me.surveyed:     # prefer survey를 완료했다면 추천 와인으로
+            if me.surveyed:  # prefer survey를 완료했다면 추천 와인으로
                 return redirect('/')
-            else:               # survey를 완료하지 않았다면 /prefer로 이동
+            else:  # survey를 완료하지 않았다면 /prefer로 이동
                 return redirect('/prefer')
-        else:               # 사용자가 없다면(None) 다시 로그인창 띄우기
+        else:  # 사용자가 없다면(None) 다시 로그인창 띄우기
             return render(request, 'user/sign-in.html', {'error': '사용자 이름 혹은 패스워드를 확인해 주세요'})
     elif request.method == 'GET':
         user = request.user.is_authenticated
-        if user:    # 로그인되면 prefer부분이 아니라 base로 간다
+        if user:  # 로그인되면 prefer부분이 아니라 base로 간다
             return redirect('/')
         else:
             return render(request, 'user/sign-in.html')
@@ -77,7 +76,7 @@ def preference_view(request):
         sweetness = request.POST.get('chk4')
         user = request.user
 
-        my_prefer = UserProfile()   # UserProfile에 저장
+        my_prefer = UserProfile()  # UserProfile에 저장
         my_prefer.user = user
         my_prefer.body = body
         my_prefer.tannin = tannin
@@ -85,7 +84,7 @@ def preference_view(request):
         my_prefer.sweetness = sweetness
         my_prefer.save()
 
-        user.surveyed = True      # Preference survey 완료
+        user.surveyed = True  # Preference survey 완료
         user.save()
 
         print('body', user.userprofile.body)
@@ -97,7 +96,6 @@ def preference_view(request):
 def logout(request):
     auth.logout(request)  # request에 값이 있는지session에서 알아서 찾아내준다.
     return redirect("/sign-in")
-
 
 # @login_required
 # def wine_recommend(request):

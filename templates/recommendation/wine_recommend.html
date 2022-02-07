@@ -1,6 +1,24 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block css %}
+    <style>
+        .image1 {
+            opacity: 1;
+            position: relative;
+            width: 1.4vw;
+            height: 3.4vh;
+            border-radius: 0;
+
+        }
+        .image1:hover {
+            opacity: 0.2;
+            transition: opacity 0.5s;
+        }
+    {#    일단 이렇게 해두었는데 나중에 고쳐주세용~~!! #}
+    </style>
+{% endblock %}
+
 {% block title %}
     추천 와인
 {% endblock %}
@@ -42,12 +60,14 @@
                         <p>{{ wine.region }}</p>
                     </div>
                     <div class="main-wines__img">
-                        <div>picked: {{wine.saved_count}}</div>
+{#                        <div>picked: {{wine.saved_count}}</div>#}
                         <a href="{% url 'recommendation:wine-save-toggle' wine.id %}">
-                            {% if wine in user.profile.like_posts.all %}
-                                <img class="img2" id='save' src="{% static 'images/bookmark2.png' %}" alt="" onclick=save(this.alt)>
+                            {% if wine in user.my_pic.all %}
+{#                                if wine is in my-pic list #}
+                                <img class="image1" src="{% static 'images/bookmark2.png' %}" alt="">
                             {% else %}
-                                <img class="img1" id='save' src="{% static 'images/bookmark1.png' %}" alt="" onclick=save(this.alt)>
+{#                                if not in the list #}
+                                <img class="image1" src="{% static 'images/bookmark1.png' %}" alt="">
                             {% endif %}
                         </a>
 {#                        <img class="img1" id='save' src="{% static 'images/bookmark1.png' %}" alt="" onclick=save(this.alt)>#}
