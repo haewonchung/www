@@ -6,17 +6,18 @@ class Wine(models.Model):
     class Meta:
         db_table = "wine"
 
-    user = models.ManyToManyField(User, blank=True)
-    food = models.ManyToManyField('Food', blank=True)
+    mypic = models.ManyToManyField(User, related_name='my_pic', blank=True)  # some_user.my_pic.all()
+    food = models.ManyToManyField('Food', related_name='food_for_wine', blank=True)
     name = models.CharField(max_length=256)
     type = models.CharField(max_length=100)
     region = models.CharField(max_length=100)
-    country = models.CharField(max_length=100)
+    country = models.CharField(max_length=100, null=True)
     rating = models.FloatField()
-    primary_flavors = models.CharField(max_length=256)
+    primary_flavors = models.CharField(max_length=256, null=True)
     comment = models.TextField(null=True)
-    purchase_link = models.URLField(max_length=256)
+    purchase_link = models.URLField(max_length=256, null=True)
     image = models.URLField(max_length=256, null=True)
+    saved_count = models.PositiveIntegerField(default=0)
 
 
 class WineProfile(models.Model):

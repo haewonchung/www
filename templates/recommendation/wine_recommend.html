@@ -42,8 +42,16 @@
                         <p>{{ wine.region }}</p>
                     </div>
                     <div class="main-wines__img">
-                        <img class="img1" id='save' src="{% static 'images/bookmark1.png' %}" alt="" onclick=save(this.alt)>
-                        <img class="img2" id='save' src="{% static 'images/bookmark2.png' %}" alt="" onclick=save(this.alt)>
+                        <div>picked: {{wine.saved_count}}</div>
+                        <a href="{% url 'recommendation:wine-save-toggle' wine.id %}">
+                            {% if wine in user.profile.like_posts.all %}
+                                <img class="img2" id='save' src="{% static 'images/bookmark2.png' %}" alt="" onclick=save(this.alt)>
+                            {% else %}
+                                <img class="img1" id='save' src="{% static 'images/bookmark1.png' %}" alt="" onclick=save(this.alt)>
+                            {% endif %}
+                        </a>
+{#                        <img class="img1" id='save' src="{% static 'images/bookmark1.png' %}" alt="" onclick=save(this.alt)>#}
+{#                        <img class="img2" id='save' src="{% static 'images/bookmark2.png' %}" alt="" onclick=save(this.alt)>#}
                     </div>
                 </div>
             </div>

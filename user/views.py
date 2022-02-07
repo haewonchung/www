@@ -88,6 +88,14 @@ def preference_view(request):
         my_prefer.sweetness = sweetness
         my_prefer.save()
 
+<<<<<<< Updated upstream
+=======
+        user.surveyed = True      # Preference survey 완료
+        user.save()
+
+        print('body', user.userprofile.body)
+        print('tannin', user.userprofile.tannin)
+>>>>>>> Stashed changes
         return redirect('/')
 
 
@@ -97,17 +105,24 @@ def logout(request):
     return redirect("/sign-in")
 
 
-@login_required()
-def recommend(request):
-    df = pd.read_csv('Wine.csv')
-    user = request.user
-    user_data = UserProfile.objects.get(user=user)
-    x_data = df.drop(columns=['Name', 'Link', 'Country', 'Type', 'Flavor', 'Comment', 'Region', ], axis=1)  # 문자열빼고
-    x_data = x_data.astype(np.float32)  # 32비트로 바꿔줘야 keras에서 알아듣는다.
-    wine_based_collab = cosine_similarity(user_data, x_data)
-    wine_based_collab = pd.DataFrame(wine_based_collab)
-    result = (wine_based_collab[1].sort_values(ascending=False)[1:2]).index
-    result = str(result).split("[")
-    result = int(result[1].split()[0].split("]")[0])
-    final = df["Index"][result]
-    return final
+# @login_required
+# def wine_recommend(request):
+#     me = request.user
+#     if me.surveyed:
+#         df = pd.read_csv('csvfile')
+#         df = df.drop(
+#             columns=['Name', 'Link', 'Country', 'Type', 'Flavor', 'Comment', 'Region', 'Index', 'Rating', 'Img'],
+#             axis=1)  # 문자열빼고
+#         df = df.astype(np.float32)  # 32비트로 바꿔줘야 keras에서 알아듣는다.
+#         # userdf = pd.read_csv('user_profile.csv')
+#         # userdf_1 = userdf.drop(columns=['user__id', 'id'])
+#         userbody = me.userprofile.body
+#         usertannin = me.userprofile.tannin
+#         userdf = [userbody, usertannin]
+#         wine_based_collab = cosine_similarity(df, userdf)  # 유저의 프리퍼런스 행을 수치화한 자료가 들어가서
+#         wine_based_collab = pd.DataFrame(wine_based_collab)
+#         result = (wine_based_collab[0].sort_values(ascending=False)[:10])
+#
+#         return render(request, 'recommendation/wine_recommend.html', {'wines': wines})
+#     else:
+#         return redirect('/prefer')
