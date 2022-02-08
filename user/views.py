@@ -1,5 +1,7 @@
+import pandas
 from django.shortcuts import render, redirect
 from .models import User, UserProfile
+from recommendation.models import WineRecommend ,Wine
 from django.contrib.auth import get_user_model  # 사용자가 데이터베이스 안에 있는지 검사
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -70,36 +72,51 @@ def preference_view(request):
     if request.method == "GET":
         return render(request, 'user/preference.html')
     elif request.method == "POST":
-        # body = request.POST.get('chk1')
-        # tannin = request.POST.get('chk2')
-        # acidity = request.POST.get('chk3')
-        # sweetness = request.POST.get('chk4')
-        # user = request.user
-        #
-        # my_prefer = UserProfile()  # UserProfile에 저장
-        # my_prefer.user = user
-        # my_prefer.body = body
-        # my_prefer.tannin = tannin
-        # my_prefer.acidity = acidity
-        # my_prefer.sweetness = sweetness
-        # my_prefer.save()
-        #
-        # user.surveyed = True  # Preference survey 완료
-        # user.save()
-        #
-        # print('body', user.userprofile.body)
-        # print('tannin', user.userprofile.tannin)
-        # return redirect('/')
+        # 사용자 선호조사 user_profile에 저장
 
-        t = ['body', 'tannin', 'acidity', 'sweetness']
-        my_prefer = UserProfile()
+        body = request.POST.get('chk1')
+        tannin = request.POST.get('chk2')
+        acidity = request.POST.get('chk3')
+        sweetness = request.POST.get('chk4')
         user = request.user
+
+        my_prefer = UserProfile()  # UserProfile에 저장
         my_prefer.user = user
-        for n, i in enumerate(t):
-            setattr(user.userprofile, i, request.POST.get(f'chk{n + 1}'))
-        user.userprofile.save()
-        user.surveyed = True
+        my_prefer.body = body
+        my_prefer.tannin = tannin
+        my_prefer.acidity = acidity
+        my_prefer.sweetness = sweetness
+        my_prefer.save()
+
+        user.surveyed = True  # Preference survey 완료
         user.save()
+
+        # 추천하는 와인 user_recommend에 저장
+
+        df = pd.read_csv("Wine.csv")
+        df = df.drop(
+            columns=['Name', 'Link', 'Country', 'Type', 'Flavor', 'Comment', 'Region', 'Index', 'Rating', 'Img'],
+            axis=1)  # 문자열빼고
+        df = df.astype(np.float32)  # 32비트로 바꿔줘야 keras에서 알아듣는다.
+        x = np.array([body, tannin, acidity, sweetness])
+        userdf_1 = np.tile(x, (100, 1))  # 100*4컬럼으로 만들어줌
+        print(userdf_1)
+        userdf = userdf_1.astype(np.float32)
+        wine_based_collab = cosine_similarity(df, userdf)  # 유저의 프리퍼런스 행을 수치화한 자료가 들어가서
+        wine_based_collab = pd.DataFrame(
+            wine_based_collab)
+        result = (wine_based_collab[0].sort_values(ascending=False)[:8])
+        print(result)
+        list = result.index.tolist()  # 상위 8개 인덱스만 가져오기
+        for wineid in list:
+            print(wineid)
+            wine = Wine.objects.get(id=wineid + 1)
+            print(wine)
+            new_recommend = WineRecommend()
+            new_recommend.user = user
+            new_recommend.wine = wine
+            new_recommend.save()
+
         return redirect('/')
 
 
@@ -108,32 +125,3 @@ def logout(request):
     auth.logout(request)  # request에 값이 있는지session에서 알아서 찾아내준다.
     return redirect("/sign-in")
 
-
-def wine_recommend(request):
-    print(1)
-    me = request.user
-    if me.surveyed:
-        df = pd.read_csv("Wine.csv")
-        df = df.drop(
-            columns=['Name', 'Link', 'Country', 'Type', 'Flavor', 'Comment', 'Region', 'Index', 'Rating', 'Img'],
-            axis=1)  # 문자열빼고
-        df = df.astype(np.float32)  # 32비트로 바꿔줘야 keras에서 알아듣는다.
-        userid = request.user.id
-        user_data = UserProfile.objects.get(user_id=userid)
-        userbody = user_data.body
-        usertannin = user_data.tannin
-        useracidity = user_data.acidity
-        usersweetness = user_data.sweetness
-        print(userbody, usertannin, usersweetness, useracidity)
-        print(df)
-        print(user_data)
-        x = np.array([userbody, usertannin, useracidity, usersweetness])
-        userdf_1 = np.tile(x, (100, 1))
-        print(userdf_1)
-        userdf = userdf_1.astype(np.float32)
-
-        wine_based_collab = cosine_similarity(df, userdf)  # 유저의 프리퍼런스 행을 수치화한 자료가 들어가서
-        wine_based_collab = pd.DataFrame(wine_based_collab)
-        result = (wine_based_collab[0].sort_values(ascending=False)[:10]).index.values
-        print(result)
-        return None
