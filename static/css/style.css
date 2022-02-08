@@ -219,7 +219,7 @@ a {
     min-height: 100vh;
 }
 
-.login-log__img {
+.login-logo img {
     height: 440px;
     margin: 0px 50px;
 }
@@ -576,52 +576,166 @@ hr {
     font-weight: bold;
 }
 
+#later-link {
+    text-decoration: none;
+    color: white;
+}
 
-/*wine_detail*/
+.header-button {
+    align-items: center;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #852F34;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 20px 20px;
+    cursor: pointer;
+    margin: 0 8%;
+}
+
+.logo img {
+    width: 70%;
+}
+
+.upright-button {
+    display: flex;
+    justify-content: flex-end;
+    margin: 2% 8%;
+}
+
+.all-wine-inform {
+    width: 150px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    background: #852F34;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.logout {
+    width: 150px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #852F34;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.my-pick {
+    width: 150px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #852F34;
+    border-radius: 30px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.my-pick img {
+    height: 1vw;
+    margin-right: 0.3vw;
+    margin-bottom: 0.2vw;
+}
+
+.all-wine-inform {
+    width: 161px;
+    height: 49px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    background: #852F34;
+    border-radius: 30px;
+}
+
+.logout {
+    width: 161px;
+    height: 49px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #852F34;
+    border-radius: 30px;
+}
+
+.my-pick {
+    width: 161px;
+    height: 49px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #852F34;
+    border-radius: 30px;
+    margin-right: 15px;
+}
+
+
+/*윗부분까지 공통*/
+
+
+/*아랫부분부터 style.css에 추가*/
 
 .information-part {
-    width: 1700px;
-    margin: 0 auto;
-    margin-top: 200px;
+    margin-top: 25vh;
     display: flex;
-    flex-direction: row;
+    justify-content: center;
 }
 
 .wine-photo {
-    background-color: aqua;
-    width: 10vw;
-    height: 100%;
+    height: 30vw;
     border-radius: 20px;
+    margin: 0px 5vw;
 }
 
 .body-right {
-    margin-left: 450px;
+    max-width: 450px;
+    margin: 0px 5vw;
 }
 
 .origin {
-    width: 400px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-left: 20px
+    margin-left: 20px;
+    font-size: larger;
 }
 
+.origin-test__origin {}
+
 .region {
-    font-size: 22px;
+    font-size: larger;
     margin-left: 20px;
 }
 
 .wine-type {
-    width: 400px;
     display: flex;
     flex-direction: row;
-    margin-left: 20px
+    margin-left: 20px;
+    font-size: larger;
 }
 
 .rating {
     display: flex;
     flex-direction: row;
-    margin-left: 20px
+    margin-left: 20px;
+    font-size: larger;
 }
 
 .navyBtn {
@@ -662,6 +776,7 @@ hr {
 .origin-test {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .wine-rating {
@@ -669,97 +784,99 @@ hr {
     flex-direction: row;
 }
 
-#later-link {
-    text-decoration: none;
-    color: white;
-}
-
-/*wine_detail의 안주추천*/
-.food-frame {
-    width: 1700px;
-    margin: 0 auto;
-    margin-bottom: 100px;
-    margin-top: 200px;
-}
 .food-body {
-    width: 1700px;
     display: flex;
     flex-direction: row;
     margin: 0 auto;
     margin-top: 100px;
     flex-wrap: wrap;
 }
+
+.food {
+    height: 320px;
+    width: 240px;
+    border-radius: 20px;
+}
+
+.food-right {
+    width: 170px;
+    margin-left: 20px;
+}
+
 .menu {
     display: flex;
     flex-direction: row;
     margin-bottom: 170px;
     margin-left: 100px;
 }
-.food {
-    height: 320px;
-    width: 240px;
-    border-radius: 20px;
-}
-.food-right {
-    width: 170px;
-    margin-left: 20px;
+
+.return-main {
+    display: flex;
+    justify-content: flex-end;
 }
 
-/*wine_all&my_pick*/
+.return-main-button {
+    width: 250px;
+    height: 60px;
+    background: #C49A37;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-.preface {
-    width: 70vw;
+.food-frame {
     margin: 0 auto;
-    margin-top: 23vh;
-    font-size: 24px;
-    font-weight: bold;
-    padding-bottom: 4vh;
+    margin-bottom: 100px;
+    margin-top: 200px;
+}
+
+button {
+    background: goldenrod;
+    color: #fff;
+    border: none;
+    position: relative;
+    height: 60px;
+    font-size: 1.6em;
+    padding: 0 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+}
+
+button:hover {
+    background: #fff;
     color: goldenrod;
 }
 
-.all-wine-container {
-    width: 70vw;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+button:before,
+button:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: goldenrod;
+    transition: 400ms ease all;
 }
 
-.all-wine-item {
-    width: 25%;
-    margin-bottom: 3vh;
+button:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
 }
 
-.wine-inform {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+button:hover:before,
+button:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
 }
-
-.wine-name-origin {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-.wine-name {
-    margin-bottom: 0;
-    color: #852F34;
-    font-weight: bold;
-    font-size: 1.1rem;
-}
-
-.wine-origin {
-    color: black;
-    font-size: 1.1rem;
-}
-
 
 
 /*wine_detail.html에 있던 style부분 class로 묶어 css로 추가한 부분*/
+
 .hr-width {
     width: 100%;
 }
@@ -821,4 +938,21 @@ hr {
 
 .button-name {
     color: white;
+}
+
+
+/* Wine Profile 부분 */
+
+.taste-profile {
+    margin-top: 0.5vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.taste-profile__img {
+    margin-left: 1vw;
+}
+
+.taste-profile__img img {
+    margin: 0 0.5vw;
 }

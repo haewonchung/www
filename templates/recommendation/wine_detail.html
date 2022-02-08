@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block css %}
+    <style>
+        body {
+            background-color: white;
+        }
+    </style>
+{% endblock %}
+
 {% block title %}
     와인정보
 {% endblock %}
@@ -18,65 +26,117 @@
     <div class="information-part">
         <div>
             <img src="https://253qv1sx4ey389p9wtpp9sj0-wpengine.netdna-ssl.com/wp-content/uploads/2021/10/La-Co%CC%82te-aux-Enfants_Bollinger_credit_Collection_Bollinger-1280x1920-1.jpg"
-                 alt="와인 이미지를 넣어주세요" class="wine-photo">
+                 alt="와인 이미지를 넣어주세요" class="wine-photo" >
         </div>
         <div class="body-right">
             <div class="wine-inform-content">
                 <div class="origin-test">
-                    <div>
-                        <p class="font30"><b>Origin</b></p>
+                    <div class="origin-test__origin">
+                        <p>Origin</p>
                         <div class="origin">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" alt=""
-                                class="flag-size">
+                                 style="width: 100px; height: 100px; border-radius: 70px">
                             <div class="region">
-                                <p><b>{{ wine.region }}</b></p>
-                                <p><b>{{ wine.country }}</b></p>
+                                <p>{{ wine.region }}</p>
+                                <p>{{ wine.country }}</p>
                             </div>
                         </div>
                     </div>
                     <div class="test-profile">
-                        <p class="font30"><b>Wine Profile for {{ wine.name }}</b></p>
+                        <p>Wine Profile</p>
+                        <div class="taste-profile">
+                            <p class="taste-profile__text">Body</p>
+                            <div class="taste-profile__img">
+                                <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <hr class="hr-width">
+                <hr style="width: 100%">
                 <div class="wine-rating">
                     <div>
-                        <p class="font30"><b>Wine Type</b></p>
+                        <p>Wine Type</p>
                         <div class="wine-type">
-                            <span class="iconwine"><i class="fas fa-wine-glass-alt fa-4x"></i></span>
-                            <p class="marleffont32"><b>{{ wine.type }}</b></p>
+                            <i class="fas fa-wine-glass-alt" style="height: 80px; width: 55px; color: firebrick"></i>
+                            <p>{{ wine.type }}</p>
                         </div>
                     </div>
                     <div>
-                        <p class="font30"><b>Ratings</b></p>
+                        <p>Ratings</p>
                         <div class="rating">
-                            <span class="iconstar"><i class="fas fa-star fa-3x"></i></span>
-                            <p class="rating-number"><b>{{ wine.rating }} /5.0</b></p>
+                            <p>{{ wine.rating }} /5.0</p>
                         </div>
                     </div>
                 </div>
-                <hr class="hr-width">
+                <hr style="width: 100%">
                 <div>
                     <div>
-                        <p class="font30"><b>Primary Flavor</b></p>
+                        <p>Primary Flavor</p>
                         <div class="wine-type">
-                            <span class="iconwine"><i class="fas fa-wine-glass-alt fa-4x"></i></span>
-                            <p class="marleffont32"><b>{{ wine.primary_flavors }}</b></p>
+                            <p>{{ wine.primary_flavors }}</p>
                         </div>
                     </div>
-                    <p class="font30"><b>Purchase Link</b></p>
+                    <p>Purchase Link</p>
                     <div>
 {#                        <button type="button" class="navyBtn" onclick="location.href='{{ wine.purchase_link }}'">Buy</button>#}
 {#                        Open link in new tab (button)#}
                         <button type="button" class="navyBtn" onclick="  window.open('{{ wine.purchase_link }}', '_blank'); return false;">Buy</button>
                     </div>
                 </div>
-                <hr class="hr-width">
+                <hr style="width: 100%">
                 <div class="wine-comment">
-                    <p class="font30"><b>Wine Comment</b></p>
-                    <p class="wine-comment-p">{{ wine.comment }}</p>
+                    <p>Wine Comment</p>
+                    <p class="wine-comment">{{ wine.comment }}</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="food-frame">
+        <div class="food-header">
+            <p class="font56">안주 추천</p>
+            <p class="marleffont24">{와인이름}이랑 잘 어울리는 안주는 아래와 같습니다.</p>
+        </div>
+        <div class="food-body">
+            <div class="menu">
+                <img src="https://t1.daumcdn.net/cfile/tistory/9942723E5AFBA3F230" alt="" class="food">
+                <div class="food-right">
+                    <p class="font26">감바스</p>
+                    <p class="word-font18">잘 어울리는 이유</p>
+                </div>
+            </div>
+            <div class="menu">
+                <img src="https://t1.daumcdn.net/cfile/tistory/9942723E5AFBA3F230" alt="" class="food">
+                <div class="food-right">
+                    <p class="font26">감바스</p>
+                    <p class="word-font18">잘 어울리는 이유</p>
+                </div>
+            </div>
+            <div class="menu">
+                <img src="https://t1.daumcdn.net/cfile/tistory/9942723E5AFBA3F230" alt="" class="food">
+                <div class="food-right">
+                    <p class="font26">감바스</p>
+                    <p class="word-font18">잘 어울리는 이유</p>
+                </div>
+            </div>
+            <div class="menu">
+                <img src="https://t1.daumcdn.net/cfile/tistory/9942723E5AFBA3F230" alt="" class="food">
+                <div class="food-right">
+                    <p class="font26">감바스</p>
+                    <p class="word-font18">잘 어울리는 이유</p>
+                </div>
+            </div>
+        </div>
+        <div class="return-main">
+            <div class="return-main-button">
+                <p class="button-name">추천 와인으로 돌아가기</p>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}
