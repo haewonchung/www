@@ -18,6 +18,8 @@ class Wine(models.Model):
     purchase_link = models.URLField(max_length=256, null=True)
     image = models.URLField(max_length=256, null=True)
     saved_count = models.PositiveIntegerField(default=0)
+    ytinfo = models.TextField(null=True)
+    yturl = models.URLField(max_length=256, null=True)
 
 
 class WineProfile(models.Model):

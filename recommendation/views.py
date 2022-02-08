@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from recommendation.models import Wine,WineRecommend,WineProfile
+from recommendation.models import Wine, WineRecommend, WineProfile
 from user.models import User
 
 
@@ -18,14 +18,14 @@ def home(request):
 def wine_recommend(request):
     me = request.user
     if me.surveyed:
-        recommend_wine=WineRecommend.objects.filter(user=me)
+        recommend_wine = WineRecommend.objects.filter(user=me)
         print(recommend_wine)
-        list=[]
+        list = []
         for wine in recommend_wine:
             list.append(wine.wine_id)
         print(list)
-        wines=Wine.objects.all()
-        return render(request, 'recommendation/wine_recommend.html', {'list':list,'wines': wines})
+        wines = Wine.objects.all()
+        return render(request, 'recommendation/wine_recommend.html', {'list': list, 'wines': wines})
     else:
         return redirect('/prefer')
 
@@ -40,9 +40,12 @@ def wine_all(request):
 @login_required
 def wine_detail(request, id):
     wine = Wine.objects.get(id=id)  # wine id로 선별
-    wine_profile=WineProfile.objects.get(wine=wine)
+    wine_profile = WineProfile.objects.get(wine=wine)
+    wine_id = wine.yturl[-11:]
+    print(wine_id)
     if request.method == "GET":
-        return render(request, "recommendation/wine_detail.html", {'wine': wine,'wine_profile':wine_profile})
+        return render(request, "recommendation/wine_detail.html",
+                      {'wine': wine, 'wine_profile': wine_profile, 'wine_id': wine_id})
 
 
 @login_required
@@ -78,7 +81,8 @@ def search(request):
 
     if 'search_word' in request.GET:
         query = request.GET.get('search_word')
-        products = Wine.objects.all().filter(Q(name__contains=query) | Q(type__contains=query) | Q(region__icontains=query) | Q(country__icontains=query)|Q(primary_flavors__icontains=query)).distinct()
+        products = Wine.objects.all().filter(
+            Q(name__contains=query) | Q(type__contains=query) | Q(region__icontains=query) | Q(
+                country__icontains=query) | Q(primary_flavors__icontains=query)).distinct()
         print('products', products)
     return render(request, 'recommendation/search_result.html', {'query': query, 'wines': products})
-
