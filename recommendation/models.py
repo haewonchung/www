@@ -37,6 +37,7 @@ class Food(models.Model):
 
     name = models.CharField(max_length=256)
     description = models.TextField()
+    image = models.URLField(max_length=256, null=True)
 
 
 class WineRecommend(models.Model):

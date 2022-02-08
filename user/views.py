@@ -1,4 +1,3 @@
-import pandas
 from django.shortcuts import render, redirect
 from .models import User, UserProfile
 from recommendation.models import WineRecommend,Wine
@@ -72,7 +71,7 @@ def preference_view(request):
     if request.method == "GET":
         return render(request, 'user/preference.html')
     elif request.method == "POST":
-      
+
         #사용자 선호조사 user_profile에 저장
         body = request.POST.get('chk1')
         tannin = request.POST.get('chk2')
