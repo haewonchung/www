@@ -21,6 +21,10 @@
         <button class="my-pick" onclick="location.href='/my-pic'">
             <img src="{% static 'images/bookmark2_white.png' %}" alt="bookmark">나의 PICK</button>
         <button class="logout" onclick="location.href='/logout'">로그아웃</button>
+        <form id="searchForm" method="get" action="{% url 'recommendation:search' %}">
+            <img src="{% static 'images/search.png' %}" alt="search">
+            <input type="search" id="search_word" name="search_word" value="{{ search_word|default_if_none:'' }}" placeholder="와인을 검색하세요.">
+        </form>
     </div>
 </div>
     <div class="information-part">

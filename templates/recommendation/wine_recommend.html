@@ -32,15 +32,16 @@
     <div class="logo">
         <img src="{% static 'images/header-logo.png' %}" alt="">
     </div>
-            <form id="searchForm" method="get" action="{% url 'recommendation:search' %}">
-            <input type="search" id="search_word" name="search_word" value="{{ search_word|default_if_none:'' }}">
-        </form>
+            
     <div class="upright-button">
-
         <button class="all-wine-inform" onclick="location.href='/wine-all'">전체 와인 정보</button>
         <button class="my-pick" onclick="location.href='/my-pic'">
             <img src="{% static 'images/bookmark2_white.png' %}" alt="bookmark">나의 PICK</button>
         <button class="logout" onclick="location.href='/logout'">로그아웃</button>
+        <form id="searchForm" method="get" action="{% url 'recommendation:search' %}">
+            <img src="{% static 'images/search.png' %}" alt="search">
+            <input type="search" id="search_word" name="search_word" value="{{ search_word|default_if_none:'' }}" placeholder="와인을 검색하세요.">
+        </form>
     </div>
 </div>
     <main class="main">
@@ -54,9 +55,10 @@
         <div class="main-wines">
             {% for wine in wines %}
                 {% if wine.id in list   %}
+                <div class="all-wine-item1">
                     <div class="main-wines__wine">
                         <div class="img-wrapper">
-                            <a><img class="wrap-img" src="https:{{ wine.image }}" alt="wine" onclick=""></a>
+                            <img class="wrap-img" src="https:{{ wine.image }}" alt="wine" onclick="">
                             <div class="detail-page">
                                 <p style="color: white" onclick>
                                     <a href="/wine-detail/{{ wine.id }}">상세페이지 가기</a>
@@ -65,7 +67,7 @@
                         </div>
                         <div class="main-wines__desc">
                             <div>
-                                <p>{{ wine.name }}</p>
+                                <p class="wine-name">{{ wine.name }}</p>
                                 <p>{{ wine.region }}</p>
                             </div>
                             <div class="main-wines__img">
@@ -84,6 +86,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 {% endif %}
             {% endfor %}
         </div>
