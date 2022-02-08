@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from recommendation.models import Wine
+from recommendation.models import Wine,WineRecommend
 from user.models import User
 
 
@@ -17,8 +17,14 @@ def home(request):
 def wine_recommend(request):
     me = request.user
     if me.surveyed:
-        wines = Wine.objects.filter(region='Napa Valley')
-        return render(request, 'recommendation/wine_recommend.html', {'wines': wines})
+        recommend_wine=WineRecommend.objects.filter(user=me)
+        list=[]
+        for wine in recommend_wine:
+            list.append(wine.wine_id)
+
+        print(list)
+        wines=Wine.objects.all()
+        return render(request, 'recommendation/wine_recommend.html', {'list':list,'wines': wines})
     else:
         return redirect('/prefer')
 

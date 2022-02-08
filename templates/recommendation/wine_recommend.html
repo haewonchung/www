@@ -50,36 +50,38 @@
 
         <div class="main-wines">
             {% for wine in wines %}
-            <div class="main-wines__wine">
-                <div class="img-wrapper">
-                    <a><img class="wrap-img" src="{% static 'images/wine.png' %}" alt="wine" onclick=""></a>
-                    <div class="detail-page">
-                        <p style="color: white" onclick>
-                            <a href="/wine-detail/{{ wine.id }}">상세페이지 가기</a>
-                        </p>
+                {% if wine.id in list   %}
+                    <div class="main-wines__wine">
+                        <div class="img-wrapper">
+                            <a><img class="wrap-img" src="https:{{ wine.image }}" alt="wine" onclick=""></a>
+                            <div class="detail-page">
+                                <p style="color: white" onclick>
+                                    <a href="/wine-detail/{{ wine.id }}">상세페이지 가기</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="main-wines__desc">
+                            <div>
+                                <p>{{ wine.name }}</p>
+                                <p>{{ wine.region }}</p>
+                            </div>
+                            <div class="main-wines__img">
+                                {#                        <div>picked: {{wine.saved_count}}</div>#}
+                                <a href="{% url 'recommendation:wine-save-toggle' wine.id %}">
+                                    {% if wine in user.my_pic.all %}
+                                        {#                                if wine is in my-pic list #}
+                                        <img class="image1" src="{% static 'images/bookmark2.png' %}" alt="">
+                                    {% else %}
+                                        {#                                if not in the list #}
+                                        <img class="image1" src="{% static 'images/bookmark1.png' %}" alt="">
+                                    {% endif %}
+                                </a>
+                                {#                        <img class="img1" id='save' src="{% static 'images/bookmark1.png' %}" alt="" onclick=save(this.alt)>#}
+                                {#                        <img class="img2" id='save' src="{% static 'images/bookmark2.png' %}" alt="" onclick=save(this.alt)>#}
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="main-wines__desc">
-                    <div>
-                        <p>{{ wine.name }}</p>
-                        <p>{{ wine.region }}</p>
-                    </div>
-                    <div class="main-wines__img">
-{#                        <div>picked: {{wine.saved_count}}</div>#}
-                        <a href="{% url 'recommendation:wine-save-toggle' wine.id %}">
-                            {% if wine in user.my_pic.all %}
-{#                                if wine is in my-pic list #}
-                                <img class="image1" src="{% static 'images/bookmark2.png' %}" alt="">
-                            {% else %}
-{#                                if not in the list #}
-                                <img class="image1" src="{% static 'images/bookmark1.png' %}" alt="">
-                            {% endif %}
-                        </a>
-{#                        <img class="img1" id='save' src="{% static 'images/bookmark1.png' %}" alt="" onclick=save(this.alt)>#}
-{#                        <img class="img2" id='save' src="{% static 'images/bookmark2.png' %}" alt="" onclick=save(this.alt)>#}
-                    </div>
-                </div>
-            </div>
+                {% endif %}
             {% endfor %}
         </div>
     </main>
