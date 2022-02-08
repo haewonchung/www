@@ -70,25 +70,36 @@ def preference_view(request):
     if request.method == "GET":
         return render(request, 'user/preference.html')
     elif request.method == "POST":
-        body = request.POST.get('chk1')
-        tannin = request.POST.get('chk2')
-        acidity = request.POST.get('chk3')
-        sweetness = request.POST.get('chk4')
+        # body = request.POST.get('chk1')
+        # tannin = request.POST.get('chk2')
+        # acidity = request.POST.get('chk3')
+        # sweetness = request.POST.get('chk4')
+        # user = request.user
+        #
+        # my_prefer = UserProfile()  # UserProfile에 저장
+        # my_prefer.user = user
+        # my_prefer.body = body
+        # my_prefer.tannin = tannin
+        # my_prefer.acidity = acidity
+        # my_prefer.sweetness = sweetness
+        # my_prefer.save()
+        #
+        # user.surveyed = True  # Preference survey 완료
+        # user.save()
+        #
+        # print('body', user.userprofile.body)
+        # print('tannin', user.userprofile.tannin)
+        # return redirect('/')
+
+        t = ['body', 'tannin', 'acidity', 'sweetness']
+        my_prefer = UserProfile()
         user = request.user
-
-        my_prefer = UserProfile()  # UserProfile에 저장
         my_prefer.user = user
-        my_prefer.body = body
-        my_prefer.tannin = tannin
-        my_prefer.acidity = acidity
-        my_prefer.sweetness = sweetness
-        my_prefer.save()
-
-        user.surveyed = True  # Preference survey 완료
+        for n, i in enumerate(t):
+            setattr(user.userprofile, i, request.POST.get(f'chk{n + 1}'))
+        user.userprofile.save()
+        user.surveyed = True
         user.save()
-
-        print('body', user.userprofile.body)
-        print('tannin', user.userprofile.tannin)
         return redirect('/')
 
 
