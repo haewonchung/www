@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from recommendation.models import Wine,WineRecommend
+from recommendation.models import Wine,WineRecommend,WineProfile
 from user.models import User
 
 
@@ -19,10 +19,10 @@ def wine_recommend(request):
     me = request.user
     if me.surveyed:
         recommend_wine=WineRecommend.objects.filter(user=me)
+        print(recommend_wine)
         list=[]
         for wine in recommend_wine:
             list.append(wine.wine_id)
-
         print(list)
         wines=Wine.objects.all()
         return render(request, 'recommendation/wine_recommend.html', {'list':list,'wines': wines})
@@ -40,8 +40,9 @@ def wine_all(request):
 @login_required
 def wine_detail(request, id):
     wine = Wine.objects.get(id=id)  # wine id로 선별
+    wine_profile=WineProfile.objects.get(wine=wine)
     if request.method == "GET":
-        return render(request, "recommendation/wine_detail.html", {'wine': wine})
+        return render(request, "recommendation/wine_detail.html", {'wine': wine,'wine_profile':wine_profile})
 
 
 @login_required

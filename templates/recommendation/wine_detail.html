@@ -24,64 +24,215 @@
     </div>
 </div>
     <div class="information-part">
-        <div>
+        <div class="wine-photo">
             <img src="https://253qv1sx4ey389p9wtpp9sj0-wpengine.netdna-ssl.com/wp-content/uploads/2021/10/La-Co%CC%82te-aux-Enfants_Bollinger_credit_Collection_Bollinger-1280x1920-1.jpg"
-                 alt="와인 이미지를 넣어주세요" class="wine-photo" >
+                 alt="와인 이미지를 넣어주세요" class="wine-photo__photo" >
         </div>
         <div class="body-right">
             <div class="wine-inform-content">
                 <div class="origin-test">
                     <div class="origin-test__origin">
-                        <p>Origin</p>
+                        <p class="info-title">Origin</p>
                         <div class="origin">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" alt=""
-                                 style="width: 100px; height: 100px; border-radius: 70px">
+                                 style="width: 4vw; height: 4vw; border-radius: 50%">
                             <div class="region">
-                                <p>{{ wine.region }}</p>
-                                <p>{{ wine.country }}</p>
+                                <p class="info-txt">{{ wine.region }}</p>
+                                <p class="info-txt">{{ wine.country }}</p>
                             </div>
                         </div>
                     </div>
                     <div class="test-profile">
-                        <p>Wine Profile</p>
+                        <p class="info-title">Wine Profile</p>
                         <div class="taste-profile">
                             <p class="taste-profile__text">Body</p>
                             <div class="taste-profile__img">
-                                <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
-                                <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
-                                <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
-                                <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
-                                <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                {% if wine_profile.body|floatformat:0  == "1" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                {% endif %}
+                                {% if wine_profile.body|floatformat:0  == "2" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                {% endif %}
+                                {% if wine_profile.body|floatformat:0  == "3" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                {% endif %}
+                                {% if wine_profile.body|floatformat:0  == "4" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                {% endif %}
+                                {% if wine_profile.body|floatformat:0  == "5" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="taste-profile">
+                            <p class="taste-profile__text">Tannin</p>
+                            <div class="taste-profile__img">
+                                {% if wine_profile.tannin|floatformat:0  == "1" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                {% endif %}
+                                {% if wine_profile.tannin|floatformat:0  == "2" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                {% endif %}
+                                {% if wine_profile.tannin|floatformat:0  == "3" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                {% endif %}
+                                {% if wine_profile.tannin|floatformat:0  == "4" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                {% endif %}
+                                {% if wine_profile.tannin|floatformat:0  == "5" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="taste-profile">
+                            <p class="taste-profile__text">Acidity</p>
+                            <div class="taste-profile__img">
+                                {% if wine_profile.acidity|floatformat:0  == "1" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                {% endif %}
+                                {% if wine_profile.acidity|floatformat:0  == "2" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                {% endif %}
+                                {% if wine_profile.acidity|floatformat:0  == "3" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                {% endif %}
+                                {% if wine_profile.acidity|floatformat:0  == "4" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                {% endif %}
+                                {% if wine_profile.acidity|floatformat:0  == "5" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="taste-profile">
+                            <p class="taste-profile__text">Sweetness</p>
+                            <div class="taste-profile__img">
+                                {% if wine_profile.sweetness|floatformat:0  == "1" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                {% endif %}
+                                {% if wine_profile.sweetness|floatformat:0  == "2" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                {% endif %}
+                                {% if wine_profile.sweetness|floatformat:0  == "3" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                {% endif %}
+                                {% if wine_profile.sweetness|floatformat:0  == "4" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_line.png' %}" alt="ellipse_line">
+                                {% endif %}
+                                {% if wine_profile.sweetness|floatformat:0  == "5" %}
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                    <img src="{% static 'images/Ellipse_red.png' %}" alt="ellipse_red">
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
                 <hr style="width: 100%">
                 <div class="wine-rating">
-                    <div>
-                        <p>Wine Type</p>
+                    <div class="wine-rating__type">
+                        <p class="info-title">Wine Type</p>
                         <div class="wine-type">
-                            <i class="fas fa-wine-glass-alt" style="height: 80px; width: 55px; color: firebrick"></i>
-                            <p>{{ wine.type }}</p>
+                            <i class="fas fa-wine-glass-alt" style="height: 100%; width: 1.5vw; color: firebrick"></i>
+                            <p class="info-txt">{{ wine.type }}</p>
                         </div>
                     </div>
                     <div>
-                        <p>Ratings</p>
+                        <p class="info-title">Ratings</p>
                         <div class="rating">
-                            <p>{{ wine.rating }} /5.0</p>
+                            <p class="rating-number">{{ wine.rating }} / 5.0</p>
                         </div>
                     </div>
                 </div>
                 <hr style="width: 100%">
                 <div>
                     <div>
-                        <p>Primary Flavor</p>
-                        <div class="wine-type">
-                            <p>{{ wine.primary_flavors }}</p>
+                        <p class="info-title">Primary Flavor</p>
+                        <div class="wine-flavor">
+                            <p class="info-txt">{{ wine.primary_flavors }}</p>
                         </div>
                     </div>
-                    <p>Purchase Link</p>
+                    <hr style="width: 100%">
                     <div>
+                        <p class="info-title">Purchase Link</p>
 {#                        <button type="button" class="navyBtn" onclick="location.href='{{ wine.purchase_link }}'">Buy</button>#}
 {#                        Open link in new tab (button)#}
                         <button type="button" class="navyBtn" onclick="  window.open('{{ wine.purchase_link }}', '_blank'); return false;">Buy</button>
@@ -89,8 +240,8 @@
                 </div>
                 <hr style="width: 100%">
                 <div class="wine-comment">
-                    <p>Wine Comment</p>
-                    <p class="wine-comment">{{ wine.comment }}</p>
+                    <p class="info-title">Wine Comment</p>
+                    <p class="wine-comment__txt">"{{ wine.comment }}"</p>
                 </div>
             </div>
         </div>
@@ -137,6 +288,5 @@
             </div>
         </div>
     </div>
-
 
 {% endblock %}

@@ -2,7 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
+​
 html,
 body,
 div,
@@ -91,10 +91,10 @@ video {
     font: inherit;
     vertical-align: baseline;
 }
-
-
+​
+​
 /* HTML5 display-role reset for older browsers */
-
+​
 article,
 aside,
 details,
@@ -108,21 +108,21 @@ nav,
 section {
     display: block;
 }
-
+​
 body {
     line-height: 1;
 }
-
+​
 ol,
 ul {
     list-style: none;
 }
-
+​
 blockquote,
 q {
     quotes: none;
 }
-
+​
 blockquote:before,
 blockquote:after,
 q:before,
@@ -130,26 +130,26 @@ q:after {
     content: "";
     content: none;
 }
-
+​
 table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-
+​
 input:focus {
     outline: none;
 }
-
+​
 a {
     color: inherit;
     text-decoration: none;
 }
-
+​
 :root {
     --main: rgba(108, 12, 18, 1);
     --sub: rgba(195, 154, 55, 1);
 }
-
+​
 .login-form {
     display: flex;
     flex-direction: column;
@@ -161,12 +161,12 @@ a {
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 30px;
 }
-
+​
 .login-form__img {
     height: 50px;
     padding-bottom: 30px;
 }
-
+​
 .login-form__input {
     border: none;
     padding: 15px 10px;
@@ -176,12 +176,12 @@ a {
     transition: border-color 0.3s ease-in-out;
     width: 320px;
 }
-
+​
 .login-form__input::placeholder {
     padding: 0 3%;
     color: var(--main);
 }
-
+​
 .login-form__btn {
     background-color: var(--sub);
     cursor: pointer;
@@ -195,7 +195,7 @@ a {
     margin-bottom: 45px;
     width: 340px;
 }
-
+​
 .login-form__bottom {
     display: flex;
     justify-content: center;
@@ -203,7 +203,7 @@ a {
     color: var(--sub);
     margin-top: 10px;
 }
-
+​
 .login-form__a {
     text-align: center;
     text-decoration: none;
@@ -211,19 +211,19 @@ a {
     font-size: 13px;
     margin: 0px 20px;
 }
-
+​
 .login {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
-
-.login-logo img {
+​
+.login-log__img {
     height: 440px;
     margin: 0px 50px;
 }
-
+​
 .preference {
     color: white;
     font-size: 2vw;
@@ -231,7 +231,7 @@ a {
     text-align: center;
     max-width: 50vh;
 }
-
+​
 .login-login-form__title {
     display: flex;
     justify-content: center;
@@ -240,34 +240,34 @@ a {
     margin-bottom: 20px;
     font-size: larger;
 }
-
+​
 .login-form img {
     height: 30px;
     margin-bottom: 5px;
 }
-
+​
 .login-form__box {
     background-color: white;
     padding: 20px;
     border-radius: 15px;
     margin: 1vh 2vw;
 }
-
+​
 .login-form__title {
     display: flex;
     justify-content: space-between;
 }
-
+​
 .login-form__box p {
     font-size: 1vw;
 }
-
+​
 .check1 {
     display: flex;
     justify-content: center;
     margin: 10px 0;
 }
-
+​
 .login-form-check {
     display: flex;
     justify-content: center;
@@ -276,15 +276,15 @@ a {
     margin: 0px 5px;
     width: 9vw;
 }
-
+​
 .login-form-check p {
     font-size: 1vw;
 }
-
+​
 .login-form input[type="checkbox"] {
     display: none;
 }
-
+​
 .login-form label {
     display: inline-block;
     width: 16px;
@@ -294,33 +294,33 @@ a {
     border-radius: 50%;
     margin: 10px 20px;
 }
-
+​
 input[type="checkbox"]:checked+label {
     background-color: var(--sub);
 }
-
+​
 .title-center {
     text-align: center;
     margin-top: 50px;
 }
-
+​
 .wrap {
     width: 400px;
     margin: 0 auto;
 }
-
+​
 .form-area {
     margin-top: 25px;
 }
-
+​
 .timeline-container {
     margin-top: 25px
 }
-
+​
 body {
     background-color: var(--main);
 }
-
+​
 #body {
     background: url(rec_background.png) no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -328,10 +328,10 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
-
-
+​
+​
 /* header 부분 */
-
+​
 .header-button {
     align-items: center;
     position: fixed;
@@ -339,10 +339,8 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    z-index: 1;
-    transition: all .2s
 }
-
+​
 .logo {
     width: 150px;
     height: 150px;
@@ -355,32 +353,29 @@ body {
     cursor: pointer;
     margin: 0 8%;
 }
-
+​
 .logo img {
     width: 70%;
 }
-
+​
 .upright-button {
     display: flex;
     justify-content: flex-end;
     margin: 2% 8%;
 }
-
+​
 .all-wine-inform {
     width: 150px;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 15px;
     background: #852F34;
     border-radius: 30px;
-    margin-right: 15px;
     cursor: pointer;
-    color: white;
-    font-size: medium;
-    border: none;
 }
-
+​
 .logout {
     width: 150px;
     height: 40px;
@@ -389,13 +384,9 @@ body {
     align-items: center;
     background: #852F34;
     border-radius: 30px;
-    margin-right: 15px;
     cursor: pointer;
-    color: white;
-    font-size: medium;
-    border: none;
 }
-
+​
 .my-pick {
     width: 150px;
     height: 40px;
@@ -406,29 +397,25 @@ body {
     border-radius: 30px;
     margin-right: 15px;
     cursor: pointer;
-    color: white;
-    font-size: medium;
-    border: none;
 }
-
+​
 .my-pick img {
     height: 1vw;
     margin-right: 0.3vw;
     margin-bottom: 0.2vw;
 }
-
-
+​
+​
 /* recommend */
-
+​
 .main {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: 27vh;
-    margin-bottom: 5vh;
+    min-height: 120vh;
 }
-
+​
 .nickname {
     display: flex;
     align-items: left;
@@ -436,28 +423,28 @@ body {
     min-height: 10vh;
     margin-right: 60vw;
 }
-
+​
 .nickname-contents {
     display: flex;
 }
-
+​
 .nickname-contents p {
     color: white;
     font-size: 2vw;
 }
-
+​
 .nickname-contents img {
     width: 2vw;
     margin-bottom: 0.5vw;
 }
-
+​
 hr {
     background-color: white;
     width: 100%;
     height: 2px;
     border: none;
 }
-
+​
 .main-wines {
     display: flex;
     flex-wrap: wrap;
@@ -465,25 +452,21 @@ hr {
     border-radius: 20px;
     width: 77vw;
     height: 100%;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 1vw;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3vw;
 }
-
-.main-wines>* {
-    margin: 2.1vw;
-}
-
+​
 .main-wines__wine {
     border-radius: 10px;
     width: 15vw;
     height: 100%;
 }
-
+​
 .img-wrapper {
     position: relative;
 }
-
+​
 .detail-page {
     top: 50%;
     left: 50%;
@@ -500,46 +483,45 @@ hr {
     opacity: 0;
     transition: opacity 0.3s;
 }
-
+​
 .detail-page p {
     font-size: 0.8vw;
 }
-
+​
 .img-wrapper:hover .detail-page {
     opacity: 1;
 }
-
+​
 .wrap-img {
-    height: 20vw;
     transition: filter 0.3s;
 }
-
+​
 .img-wrapper:hover .wrap-img {
     filter: brightness(70%);
 }
-
+​
 .img-wrapper img:first-child {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 1vw;
 }
-
+​
 .main-wines__desc {
     padding-top: 0.5vw;
     display: flex;
     justify-content: space-between;
     margin: 0 1vw;
-    align-items: flex-start;
+    align-items: center;
 }
-
+​
 .main-wines__img {
     position: relative;
     width: 1.4vw;
     height: 100%;
     cursor: pointer;
 }
-
+​
 .img1 {
     position: relative;
     width: 1.4vw;
@@ -547,7 +529,7 @@ hr {
     border-radius: 0;
     transition: opacity 0.5s;
 }
-
+​
 .img2 {
     top: 0;
     left: 0;
@@ -557,200 +539,92 @@ hr {
     opacity: 0;
     transition: opacity 0.5s;
 }
-
+​
 .main-wines__img:hover .img2 {
     opacity: 1;
 }
-
+​
 .main-wines__img:hover .img1 {
     opacity: 0;
 }
-
+​
 .main-wines__desc p {
     font-size: 0.9vw;
 }
-
+​
 .main-wines__desc p:first-child {
     color: var(--main);
     font-size: 0.95vw;
     font-weight: bold;
 }
-
-#later-link {
-    text-decoration: none;
-    color: white;
-}
-
-.header-button {
-    align-items: center;
-    position: fixed;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.logo {
-    width: 150px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #852F34;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 0px 0px 20px 20px;
-    cursor: pointer;
-    margin: 0 8%;
-}
-
-.logo img {
-    width: 70%;
-}
-
-.upright-button {
-    display: flex;
-    justify-content: flex-end;
-    margin: 2% 8%;
-}
-
-.all-wine-inform {
-    width: 150px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 15px;
-    background: #852F34;
-    border-radius: 30px;
-    cursor: pointer;
-}
-
-.logout {
-    width: 150px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #852F34;
-    border-radius: 30px;
-    cursor: pointer;
-}
-
-.my-pick {
-    width: 150px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #852F34;
-    border-radius: 30px;
-    margin-right: 15px;
-    cursor: pointer;
-}
-
-.my-pick img {
-    height: 1vw;
-    margin-right: 0.3vw;
-    margin-bottom: 0.2vw;
-}
-
-.all-wine-inform {
-    width: 161px;
-    height: 49px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 15px;
-    background: #852F34;
-    border-radius: 30px;
-}
-
-.logout {
-    width: 161px;
-    height: 49px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #852F34;
-    border-radius: 30px;
-}
-
-.my-pick {
-    width: 161px;
-    height: 49px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #852F34;
-    border-radius: 30px;
-    margin-right: 15px;
-}
-
-
-/*윗부분까지 공통*/
-
-
-/*아랫부분부터 style.css에 추가*/
-
+​
+​
+/*wine_information*/
+​
 .information-part {
-    margin-top: 25vh;
+    width: 1700px;
+    margin: 0 auto;
+    margin-top: 200px;
     display: flex;
     justify-content: center;
-}
-
-.wine-photo {
-    height: 30vw;
-    border-radius: 20px;
-    margin: 0px 5vw;
-}
-
-.body-right {
-    max-width: 450px;
-    margin: 0px 5vw;
-}
-
-.origin {
-    display: flex;
-    flex-direction: row;
     align-items: center;
-    margin-left: 20px;
-    font-size: larger;
 }
-
-.origin-test__origin {}
-
-.region {
-    font-size: larger;
-    margin-left: 20px;
+​
+.wine-photo {
+    height: 32vw;
+    margin: 0px 5vw;
 }
-
-.wine-type {
+​
+.wine-photo img {
+    width: 100%;
+    height: 32vw;
+    object-fit: cover;
+    border-radius: 20px;
+}
+​
+.body-right {
+    height: 32vw;
+    width: 32vw;
+    margin: 0px 5vw;
+}
+​
+.origin {
+    width: 400px;
     display: flex;
-    flex-direction: row;
-    margin-left: 20px;
+    align-items: center;
+    margin-left: 1vw;
     font-size: larger;
 }
-
+​
+.region {
+    font-size: 22px;
+    margin-left: 20px;
+}
+​
+.wine-type {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    margin-top: 0.5vw;
+    margin-left: 2vw;
+    font-size: larger;
+}
+​
 .rating {
     display: flex;
-    flex-direction: row;
-    margin-left: 20px;
     font-size: larger;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 2vw;
 }
-
-.navyBtn {
-    height: 50px;
-    width: 100%;
-    font-size: 24px;
-}
-
+​
 .bottom-button {
     display: flex;
     flex-direction: row;
     justify-content: start;
     background-color: antiquewhite;
 }
-
+​
 .return-to-main {
     width: 230px;
     height: 60px;
@@ -761,7 +635,7 @@ hr {
     justify-content: center;
     align-items: center;
 }
-
+​
 .food-recommend {
     width: 230px;
     height: 60px;
@@ -772,18 +646,19 @@ hr {
     justify-content: center;
     align-items: center;
 }
-
+​
 .origin-test {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
-
+​
 .wine-rating {
     display: flex;
+    justify-content: flex-start;
     flex-direction: row;
 }
-
+​
 .food-body {
     display: flex;
     flex-direction: row;
@@ -791,30 +666,30 @@ hr {
     margin-top: 100px;
     flex-wrap: wrap;
 }
-
+​
 .food {
     height: 320px;
     width: 240px;
     border-radius: 20px;
 }
-
+​
 .food-right {
     width: 170px;
     margin-left: 20px;
 }
-
+​
 .menu {
     display: flex;
     flex-direction: row;
     margin-bottom: 170px;
     margin-left: 100px;
 }
-
+​
 .return-main {
     display: flex;
     justify-content: flex-end;
 }
-
+​
 .return-main-button {
     width: 250px;
     height: 60px;
@@ -824,33 +699,35 @@ hr {
     justify-content: center;
     align-items: center;
 }
-
+​
 .food-frame {
     margin: 0 auto;
     margin-bottom: 100px;
     margin-top: 200px;
 }
-
-button {
+​
+.navyBtn {
+    height: 2vw;
+    width: 100%;
     background: goldenrod;
     color: #fff;
     border: none;
     position: relative;
-    height: 60px;
-    font-size: 1.6em;
+    font-size: 1vw;
     padding: 0 2em;
     cursor: pointer;
     transition: 800ms ease all;
     outline: none;
+    margin-bottom: 0.3vw;
 }
-
-button:hover {
+​
+.navyBtn:hover {
     background: #fff;
     color: goldenrod;
 }
-
-button:before,
-button:after {
+​
+.navyBtn:before,
+.navyBtn:after {
     content: '';
     position: absolute;
     top: 0;
@@ -860,59 +737,64 @@ button:after {
     background: goldenrod;
     transition: 400ms ease all;
 }
-
-button:after {
+​
+.navyBtn:after {
     right: inherit;
     top: inherit;
     left: 0;
     bottom: 0;
 }
-
-button:hover:before,
-button:hover:after {
+​
+.navyBtn:hover:before,
+.navyBtn:hover:after {
     width: 100%;
     transition: 800ms ease all;
 }
-
-
+​
+​
 /*wine_detail.html에 있던 style부분 class로 묶어 css로 추가한 부분*/
-
+​
 .hr-width {
     width: 100%;
 }
-
+​
 .font30 {
     font-size: 30px;
 }
-
+​
 .flag-size {
     width: 100px;
     height: 100px;
     border-radius: 70px;
 }
-
+​
 .iconwine {
     height: 80px;
     width: 55px;
     color: darkred;
 }
-
+​
 .iconstar {
     height: 80px;
     width: 55px;
     color: goldenrod;
 }
-
+​
 .rating-number {
-    font-size: 32px;
-    margin-left: 20px;
+    font-size: 2vw;
     color: darkgoldenrod;
+    margin-top: 0.5vw;
 }
-
-.wine-comment-p {
-    font-size: 24px;
+​
+.wine-comment__txt {
+    padding: 0 1vw;
+    padding-top: 1vw;
+    font-size: 0.8vw;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 140%;
 }
-
+​
 .font56 {
     font-size: 56px;
 }
@@ -947,6 +829,8 @@ button:hover:after {
     margin-top: 0.5vw;
     display: flex;
     justify-content: space-between;
+    margin-right: 1vw;
+    align-items: center;
 }
 
 .taste-profile__img {
@@ -954,5 +838,51 @@ button:hover:after {
 }
 
 .taste-profile__img img {
-    margin: 0 0.5vw;
+    width: 0.6vw;
+    height: 0.6vw;
+    margin: 0 0.4vw;
+}
+
+.info-title {
+    font-size: 1.3vw;
+    font-weight: 500;
+    margin-bottom: 0.6vw;
+}
+
+.info-txt {
+    font-size: 1.1vw;
+    font-weight: 400;
+    margin-bottom: 0.3vw;
+}
+
+.wine-rating__type {
+    width: 14.5vw;
+    margin-right: 3vw;
+}
+
+.origin-test__origin {
+    width: 14.5vw;
+    margin-right: 3vw;
+}
+
+.region p:first-child {
+    color: darkgoldenrod;
+    font-size: 1.1vw;
+    font-weight: 400;
+    margin-bottom: 0.3vw;
+}
+
+.fa-wine-glass-alt {
+    margin-right: 2vw;
+}
+
+hr {
+    background-color: black;
+    margin-top: 1.3vw;
+}
+
+.wine-flavor>.info-txt {
+    margin-top: 1vw;
+    display: flex;
+    justify-content: center;
 }
