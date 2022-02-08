@@ -32,11 +32,11 @@
     <div class="logo">
         <img src="{% static 'images/header-logo.png' %}" alt="">
     </div>
+            <form id="searchForm" method="get" action="{% url 'recommendation:search' %}">
+            <input type="search" id="search_word" name="search_word" value="{{ search_word|default_if_none:'' }}">
+        </form>
     <div class="upright-button">
-{#        <form type="get" action="." style="margin: 0">#}
-{#            <input  id="search_box" type="text" name="search_box"  placeholder="Search..." >#}
-{#            <button id="search_submit" type="submit" >Submit</button>#}
-{#        </form>#}
+
         <button class="all-wine-inform" onclick="location.href='/wine-all'">전체 와인 정보</button>
         <button class="my-pick" onclick="location.href='/my-pic'">
             <img src="{% static 'images/bookmark2_white.png' %}" alt="bookmark">나의 PICK</button>
