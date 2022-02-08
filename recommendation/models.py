@@ -7,7 +7,7 @@ class Wine(models.Model):
         db_table = "wine"
 
     mypic = models.ManyToManyField(User, related_name='my_pic', blank=True)  # some_user.my_pic.all()
-    food = models.ManyToManyField('Food', related_name='food_for_wine', blank=True)
+    # food = models.ManyToManyField('Food', related_name='food_for_wine', blank=True, unique=False)
     name = models.CharField(max_length=256)
     type = models.CharField(max_length=100)
     region = models.CharField(max_length=100)
@@ -39,7 +39,7 @@ class Food(models.Model):
 
     name = models.CharField(max_length=256)
     description = models.TextField()
-    image = models.URLField(max_length=256, null=True)
+    link = models.URLField(max_length=256, null=True)
 
 
 class WineRecommend(models.Model):
@@ -48,3 +48,11 @@ class WineRecommend(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, limit_choices_to={'surveyed': True})
     wine = models.ForeignKey(Wine, on_delete=models.CASCADE)
+
+
+class WineFood(models.Model):
+    class Meta:
+        db_table = "food_for_wine"
+
+    wine = models.ForeignKey(Wine, on_delete=models.CASCADE, unique=False)
+    food = models.ForeignKey(Food, on_delete=models.CASCADE)

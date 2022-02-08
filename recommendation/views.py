@@ -41,11 +41,13 @@ def wine_all(request):
 def wine_detail(request, id):
     wine = Wine.objects.get(id=id)  # wine id로 선별
     wine_profile = WineProfile.objects.get(wine=wine)
-    wine_id = wine.yturl[-11:]
-    print(wine_id)
+    wine_id = wine.yturl[-11:]   # youtube video id
+    food_list = [x.food for x in wine.winefood_set.all()]
+    print('food_list', food_list)
+    # print(wine_id)
     if request.method == "GET":
         return render(request, "recommendation/wine_detail.html",
-                      {'wine': wine, 'wine_profile': wine_profile, 'wine_id': wine_id})
+                      {'wine': wine, 'wine_profile': wine_profile, 'wine_id': wine_id, 'food_list': food_list})
 
 
 # my pick 페이지
@@ -84,7 +86,9 @@ def search(request):
     if 'search_word' in request.GET:
         query = request.GET.get('search_word')
         products = Wine.objects.all().filter(
-            Q(name__contains=query) | Q(type__contains=query) | Q(region__icontains=query) | Q(
+            Q(name__icontains=query) | Q(type__icontains=query) | Q(region__icontains=query) | Q(
                 country__icontains=query) | Q(primary_flavors__icontains=query)).distinct()
         print('products', products)
     return render(request, 'recommendation/search_result.html', {'query': query, 'wines': products})
+
+
