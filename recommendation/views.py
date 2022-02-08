@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from recommendation.models import Wine,WineRecommend,WineProfile
+from recommendation.models import Wine, WineRecommend, WineProfile
 from user.models import User
 
 
@@ -18,14 +18,14 @@ def home(request):
 def wine_recommend(request):
     me = request.user
     if me.surveyed:
-        recommend_wine=WineRecommend.objects.filter(user=me)
+        recommend_wine = WineRecommend.objects.filter(user=me)
         print(recommend_wine)
-        list=[]
+        my_list = []
         for wine in recommend_wine:
-            list.append(wine.wine_id)
-        print(list)
-        wines=Wine.objects.all()
-        return render(request, 'recommendation/wine_recommend.html', {'list':list,'wines': wines})
+            my_list.append(wine.wine_id)
+        print(my_list)
+        wines = Wine.objects.all()
+        return render(request, 'recommendation/wine_recommend.html', {'list': my_list, 'wines': wines})
     else:
         return redirect('/prefer')
 
@@ -40,22 +40,28 @@ def wine_all(request):
 @login_required
 def wine_detail(request, id):
     wine = Wine.objects.get(id=id)  # wine id로 선별
-    wine_profile=WineProfile.objects.get(wine=wine)
+    wine_profile = WineProfile.objects.get(wine=wine)
+    wine_id = wine.yturl[-11:]   # youtube video id
+    food_list = [x.food for x in wine.winefood_set.all()]
+    print('food_list', food_list)
+    # print(wine_id)
     if request.method == "GET":
-        return render(request, "recommendation/wine_detail.html", {'wine': wine,'wine_profile':wine_profile})
+        return render(request, "recommendation/wine_detail.html",
+                      {'wine': wine, 'wine_profile': wine_profile, 'wine_id': wine_id, 'food_list': food_list})
 
 
+# my pick 페이지
 @login_required
-def my_pic(request, id):
-    my_wine = Wine.objects.get(id=id)  # 추후 변경 예정
+def my_pick(request):
     if request.method == "GET":
-        return render(request, "recommendation/my_pick.html", {'wine': my_wine})
+        picks = Wine.objects.filter(mypic=request.user)  # 와인 class의 mypic M:M 필드 통해서 데이터 찾기
+        wine_list = [pick for pick in picks]  # QuerySet 내의 와인 오브젝트 리스트 형태로 반환
+        return render(request, "recommendation/my_pick.html", {'wines': wine_list})
 
 
+# 와인 mypick 저장 기능
 def wine_save_toggle(request, wine_id):
     wine = get_object_or_404(Wine, id=wine_id)
-    # user = request.user
-    # me = User.objects.get(user=user)
     me = get_object_or_404(User, id=request.user.id)
 
     check_saved_wine = me.my_pic.filter(id=wine_id)
@@ -72,13 +78,17 @@ def wine_save_toggle(request, wine_id):
     return redirect('recommendation:wine-recommend')
 
 
+# 검색 기능
 def search(request):
     query = None
     products = None
 
     if 'search_word' in request.GET:
         query = request.GET.get('search_word')
-        products = Wine.objects.all().filter(Q(name__contains=query) | Q(type__contains=query) | Q(region__icontains=query) | Q(country__icontains=query)|Q(primary_flavors__icontains=query)).distinct()
+        products = Wine.objects.all().filter(
+            Q(name__icontains=query) | Q(type__icontains=query) | Q(region__icontains=query) | Q(
+                country__icontains=query) | Q(primary_flavors__icontains=query)).distinct()
         print('products', products)
     return render(request, 'recommendation/search_result.html', {'query': query, 'wines': products})
+
 

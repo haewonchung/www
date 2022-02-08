@@ -33,3 +33,5 @@ threadpoolctl==3.1.0
 urllib3==1.26.8
 virtualenv==20.13.0
 virtualenv-clone==0.5.7
+
+selenium~=4.1.0
