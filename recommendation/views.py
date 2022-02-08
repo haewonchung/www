@@ -22,8 +22,8 @@ def wine_recommend(request):
         print(recommend_wine)
         my_list = []
         for wine in recommend_wine:
-            list.append(wine.wine_id)
-        print(list)
+            my_list.append(wine.wine_id)
+        print(my_list)
         wines = Wine.objects.all()
         return render(request, 'recommendation/wine_recommend.html', {'list': my_list, 'wines': wines})
     else:
