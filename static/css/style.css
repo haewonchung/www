@@ -756,3 +756,69 @@ hr {
     color: black;
     font-size: 1.1rem;
 }
+
+
+
+/*wine_detail.html에 있던 style부분 class로 묶어 css로 추가한 부분*/
+.hr-width {
+    width: 100%;
+}
+
+.font30 {
+    font-size: 30px;
+}
+
+.flag-size {
+    width: 100px;
+    height: 100px;
+    border-radius: 70px;
+}
+
+.iconwine {
+    height: 80px;
+    width: 55px;
+    color: darkred;
+}
+
+.iconstar {
+    height: 80px;
+    width: 55px;
+    color: goldenrod;
+}
+
+.rating-number {
+    font-size: 32px;
+    margin-left: 20px;
+    color: darkgoldenrod;
+}
+
+.wine-comment-p {
+    font-size: 24px;
+}
+
+.font56 {
+    font-size: 56px;
+}
+
+.marleffont24 {
+    margin-left: 50px;
+    font-size: 24px;
+}
+
+.marleffont32 {
+    font-size: 32px;
+    margin-left: 20px
+}
+
+.font26 {
+    font-size: 26px;
+}
+
+.word-font18 {
+    word-break: break-all;
+    font-size: 18px;
+}
+
+.button-name {
+    color: white;
+}

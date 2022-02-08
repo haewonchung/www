@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block title %}
     와인정보
 {% endblock %}
@@ -25,10 +24,10 @@
             <div class="wine-inform-content">
                 <div class="origin-test">
                     <div>
-                        <p style="font-size: 30px"><b>Origin</b></p>
+                        <p class="font30"><b>Origin</b></p>
                         <div class="origin">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" alt=""
-                                 style="width: 100px; height: 100px; border-radius: 70px">
+                                class="flag-size">
                             <div class="region">
                                 <p><b>{{ wine.region }}</b></p>
                                 <p><b>{{ wine.country }}</b></p>
@@ -36,46 +35,46 @@
                         </div>
                     </div>
                     <div class="test-profile">
-                        <p style="font-size: 30px"><b>Wine Profile for {{ wine.name }}</b></p>
+                        <p class="font30"><b>Wine Profile for {{ wine.name }}</b></p>
                     </div>
                 </div>
-                <hr style="width: 100%">
+                <hr class="hr-width">
                 <div class="wine-rating">
                     <div>
-                        <p style="font-size: 30px"><b>Wine Type</b></p>
+                        <p class="font30"><b>Wine Type</b></p>
                         <div class="wine-type">
-                            <i class="fas fa-wine-glass-alt" style="height: 80px; width: 55px; color: firebrick"></i>
-                            <p style="font-size: 32px; margin-left: 20px"><b>{{ wine.type }}</b></p>
+                            <span class="iconwine"><i class="fas fa-wine-glass-alt fa-4x"></i></span>
+                            <p class="marleffont32"><b>{{ wine.type }}</b></p>
                         </div>
                     </div>
                     <div>
-                        <p style="font-size: 30px"><b>Ratings</b></p>
+                        <p class="font30"><b>Ratings</b></p>
                         <div class="rating">
-                            <i class="fas fa-star" style="height: 80px; width: 55px; color: gold"></i>
-                            <p style="font-size: 32px; margin-left: 20px; color: darkgoldenrod;"><b>{{ wine.rating }} /5.0</b></p>
+                            <span class="iconstar"><i class="fas fa-star fa-3x"></i></span>
+                            <p class="rating-number"><b>{{ wine.rating }} /5.0</b></p>
                         </div>
                     </div>
                 </div>
-                <hr style="width: 100%">
+                <hr class="hr-width">
                 <div>
                     <div>
-                        <p style="font-size: 30px"><b>Primary Flavor</b></p>
+                        <p class="font30"><b>Primary Flavor</b></p>
                         <div class="wine-type">
-                            <i class="fas fa-wine-glass-alt" style="height: 80px; width: 55px; color: firebrick"></i>
-                            <p style="font-size: 32px; margin-left: 20px"><b>{{ wine.primary_flavors }}</b></p>
+                            <span class="iconwine"><i class="fas fa-wine-glass-alt fa-4x"></i></span>
+                            <p class="marleffont32"><b>{{ wine.primary_flavors }}</b></p>
                         </div>
                     </div>
-                    <p style="font-size: 30px"><b>Purchase Link</b></p>
+                    <p class="font30"><b>Purchase Link</b></p>
                     <div>
 {#                        <button type="button" class="navyBtn" onclick="location.href='{{ wine.purchase_link }}'">Buy</button>#}
 {#                        Open link in new tab (button)#}
                         <button type="button" class="navyBtn" onclick="  window.open('{{ wine.purchase_link }}', '_blank'); return false;">Buy</button>
                     </div>
                 </div>
-                <hr style="width: 100%">
+                <hr class="hr-width">
                 <div class="wine-comment">
-                    <p style="font-size: 30px"><b>Wine Comment</b></p>
-                    <p class="wine-comment" style="font-size: 24px">{{ wine.comment }}</p>
+                    <p class="font30"><b>Wine Comment</b></p>
+                    <p class="wine-comment-p">{{ wine.comment }}</p>
                 </div>
             </div>
         </div>
