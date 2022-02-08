@@ -65,24 +65,6 @@ def wine_save_toggle(request, wine_id):
     return redirect('recommendation:wine-recommend')
 
 
-# 검색 기능 구현
-# def search(request):
-#     # search_list = Wine.objects.filter(name__icontains="Cabernet")
-#     # search_word = request.GET['search-word']
-#     if request.method == "GET":
-#         # search_word = request.GET.get('search', '')
-#         search_word = request.GET['search_word']
-#         if search_word:
-#             search_list = Wine.objects.filter(
-#                 Q(name__icontains=search_word) | Q(type__icontains=search_word) |
-#                 Q(region__icontains=search_word) | Q(country__icontains=search_word) |
-#                 Q(primary_flavors__icontains=search_word))  # 중복제거
-#             print('search_list', search_list)
-#             return render(request, 'recommendation/search_result.html', {'search_word': search_word, 'wines': search_list})
-#         else:
-#             return render(request, 'recommendation/search_result.html')
-
-
 def search(request):
     query = None
     products = None
