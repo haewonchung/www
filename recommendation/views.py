@@ -20,12 +20,12 @@ def wine_recommend(request):
     if me.surveyed:
         recommend_wine = WineRecommend.objects.filter(user=me)
         print(recommend_wine)
-        list = []
+        my_list = []
         for wine in recommend_wine:
             list.append(wine.wine_id)
         print(list)
         wines = Wine.objects.all()
-        return render(request, 'recommendation/wine_recommend.html', {'list': list, 'wines': wines})
+        return render(request, 'recommendation/wine_recommend.html', {'list': my_list, 'wines': wines})
     else:
         return redirect('/prefer')
 
