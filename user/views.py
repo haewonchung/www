@@ -1,7 +1,7 @@
 import pandas
 from django.shortcuts import render, redirect
 from .models import User, UserProfile
-from recommendation.models import WineRecommend ,Wine
+from recommendation.models import WineRecommend,Wine
 from django.contrib.auth import get_user_model  # 사용자가 데이터베이스 안에 있는지 검사
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -72,8 +72,8 @@ def preference_view(request):
     if request.method == "GET":
         return render(request, 'user/preference.html')
     elif request.method == "POST":
-        # 사용자 선호조사 user_profile에 저장
-
+      
+        #사용자 선호조사 user_profile에 저장
         body = request.POST.get('chk1')
         tannin = request.POST.get('chk2')
         acidity = request.POST.get('chk3')
@@ -107,7 +107,7 @@ def preference_view(request):
             wine_based_collab)
         result = (wine_based_collab[0].sort_values(ascending=False)[:8])
         print(result)
-        list = result.index.tolist()  # 상위 8개 인덱스만 가져오기
+        list = result.index.tolist()        #상위 8개 인덱스만 가져오기
         for wineid in list:
             print(wineid)
             wine = Wine.objects.get(id=wineid + 1)
@@ -124,4 +124,3 @@ def preference_view(request):
 def logout(request):
     auth.logout(request)  # request에 값이 있는지session에서 알아서 찾아내준다.
     return redirect("/sign-in")
-

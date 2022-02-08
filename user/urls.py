@@ -7,5 +7,5 @@ urlpatterns = [
     path('prefer/', views.preference_view, name='preference'),
     path('logout/', views.logout, name='logout'),
 
-    path('wine_recommend/', views.wine_recommend, name='wine_recommend'),
+    # path('wine-recommend/', views.wine_recommend, name='wine_recommend'),
 ]
