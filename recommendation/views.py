@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from recommendation.models import Wine, WineRecommend, WineProfile
 from user.models import User
+from django.views.generic import ListView, TemplateView
 
 
 def home(request):
@@ -39,8 +40,22 @@ def wine_all(request):
 def wine_detail(request, id):
     wine = Wine.objects.get(id=id)  # wine id로 선별
     wine_profile = WineProfile.objects.get(wine=wine)
-    wine_id = wine.yturl[-11:]   # youtube video id
+    wine_id = wine.yturl[-11:]  # for youtube video id
     food_list = [x.food for x in wine.winefood_set.all()]
+
+    # # <For taggit>
+    # all_wine = Wine.objects.all()
+    # for mywine in all_wine[0:101]:
+    #     tags = [x.strip() for x in mywine.primary_flavors.split(',')]
+    #     for tag in tags:
+    #         if tag != '':
+    #             mywine.tags.add(tag)
+    #             print(f'saving for wine {mywine.id}...')
+    #             print(f'saving for tag {tag}...')
+    #     mywine.save()
+    #     print('mywine.tags.all():', mywine.tags.all())
+    # # <For taggit>
+
     # print('food_list', food_list)
     if request.method == "GET":
         return render(request, "recommendation/wine_detail.html",
@@ -91,3 +106,20 @@ def search(request):
     return render(request, 'recommendation/search_result.html', {'query': query, 'wines': products})
 
 
+class TagCloudTV(TemplateView):
+    # template_name = 'taggit/tag_cloud_view.html'
+    template_name = 'recommendation/tag_result.html'
+
+
+class TaggedObjectLV(ListView):
+    # template_name = 'taggit/tag_with_post.html'
+    template_name = 'recommendation/tag_result.html'
+    model = Wine
+
+    def get_queryset(self):
+        return Wine.objects.filter(tags__name=self.kwargs.get('tag'))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tagname'] = self.kwargs['tag']
+        return context

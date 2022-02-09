@@ -1,5 +1,6 @@
 from django.db import models
 from user.models import User, UserProfile
+from taggit.managers import TaggableManager
 
 
 class Wine(models.Model):
@@ -7,13 +8,13 @@ class Wine(models.Model):
         db_table = "wine"
 
     mypic = models.ManyToManyField(User, related_name='my_pic', blank=True)  # some_user.my_pic.all()
-    # food = models.ManyToManyField('Food', related_name='food_for_wine', blank=True, unique=False)
     name = models.CharField(max_length=256)
     type = models.CharField(max_length=100)
     region = models.CharField(max_length=100)
     country = models.CharField(max_length=100, null=True)
     rating = models.FloatField()
     primary_flavors = models.CharField(max_length=256, null=True)
+    tags = TaggableManager(blank=True)    # for primary_flavors
     comment = models.TextField(null=True)
     purchase_link = models.URLField(max_length=256, null=True)
     image = models.URLField(max_length=256, null=True)

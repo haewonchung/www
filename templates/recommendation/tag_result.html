@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <style>
+        body {
+            background-color: white;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    와인 검색 결과
+{% endblock %}
+{% block content %}
+<div class="header-button">
+    <div class="logo">
+        <img src="{% static 'images/header-logo.png' %}" alt="headerlogoimg">
+    </div>
+    <div class="upright-button">
+        <button class="all-wine-inform" onclick="location.href='/wine-recommend'">메인 화면</button>
+        <button class="my-pick" onclick="location.href='/my-pick'">
+            <img src="{% static 'images/bookmark2_white.png' %}" alt="bookmark">나의 PICK</button>
+        <button class="logout" onclick="location.href='/logout'">로그아웃</button>
+    </div>
+</div>
+<div class="preface1">
+    <hr size="2px" color="goldenrod">
+    <p>Wines for tag  < {{ tagname }} ></p>
+</div>
+<div class="all-wine-container">
+    {% for wine in object_list %}
+        <div class="all-wine-item">
+        <div class="wine-inform">
+            <div class="wine-photo">
+                <div class="img-wrapper">
+                    <a><img class="wrap-img"
+                            src="https:{{ wine.image }}"
+                            alt="wine" onclick=""></a>
+                    <div class="detail-page">
+                        <p style="color: white" onclick>
+                            <a href="/wine-detail/{{ wine.id }}">상세페이지 가기</a>
+                        </p>
+                    </div>
+                    <div class="wine-name-origin">
+                        <p class="wine-name">{{ wine.name }}</p>
+                        <P class="wine-origin">{{ wine.region }}</P>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

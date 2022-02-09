@@ -238,13 +238,24 @@
                     <div>
                         <p class="info-title">Primary Flavor</p>
                         <div class="wine-flavor">
-                            <p class="info-txt">{{ wine.primary_flavors }}</p>
+{#                            <p class="info-txt">{{ wine.primary_flavors }}</p>#}
+                            {% if wine.tags.all %}
+                                <p class="info-txt">
+                                {% for tag in wine.tags.all %}
+                                    <a style="text-decoration: none"
+                                       href="{% url 'recommendation:tagged_object_list' tag.name %}">
+                                    <span class="badge rounded-pill bg-success">
+                                        {{ tag.name }}
+                                    </span>
+                                    </a>
+                                {% endfor %}
+                                </p>
+                            {% endif %}
                         </div>
                     </div>
                     <hr style="width: 100%">
                     <div>
                         <p class="info-title">Purchase Link</p>
-{#                        <button type="button" class="navyBtn" onclick="location.href='{{ wine.purchase_link }}'">Buy</button>#}
 {#                        Open link in new tab (button)#}
                         <button type="button" class="navyBtn" onclick="  window.open('{{ wine.purchase_link }}', '_blank'); return false;">Buy</button>
                     </div>
