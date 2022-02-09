@@ -23,7 +23,11 @@
         <button class="all-wine-inform" onclick="location.href='/wine-all'">전체 와인 정보</button>
         <button class="my-pick" onclick="location.href='/my-pick'">
             <img src="{% static 'images/bookmark2_white.png' %}" alt="bookmark">나의 PICK</button>
-        <button class="logout" onclick="location.href='/logout'">로그아웃</button>
+            {% if not user.is_authenticated %}
+                <button class="logout" onclick="location.href='/sign-in'">로그인</button>
+            {% else %}
+                <button class="logout" onclick="location.href='/logout'">로그아웃</button>
+            {% endif %}
         <form id="searchForm" method="get" action="{% url 'recommendation:search' %}">
             <img src="{% static 'images/search.png' %}" alt="search">
             <input type="search" id="search_word" name="search_word" value="{{ search_word|default_if_none:'' }}" placeholder="와인을 검색하세요.">

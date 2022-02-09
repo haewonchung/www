@@ -30,7 +30,7 @@
 {% block content %}
 <div class="header-button">
     <div class="logo">
-        <img src="{% static 'images/header-logo.png' %}" alt="">
+        <img src="{% static 'images/header-logo.png' %}" alt="" onclick="location.href='/wine-all'">
     </div>
             
     <div class="upright-button">
@@ -72,7 +72,7 @@
                             </div>
                             <div class="main-wines__img">
                                 {#                        <div>picked: {{wine.saved_count}}</div>#}
-                                <a href="{% url 'recommendation:wine-save-toggle' wine.id %}">
+                                <a href="{% url 'recommendation:wine-save-toggle' wine.id 'wine-recommend' %}">
                                     {% if wine in user.my_pic.all %}
                                         {#                                if wine is in my-pic list #}
                                         <img class="image1" src="{% static 'images/bookmark2.png' %}" alt="">
