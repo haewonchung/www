@@ -23,9 +23,9 @@
         <button class="logout" onclick="location.href='/logout'">로그아웃</button>
     </div>
 </div>
-<div class="preface">
+<div class="preface1">
     <hr size="2px" color="goldenrod">
-    <p>와인 검색 결과</p>
+    <p>{{ user.nickname }}님의 와인 저장소</p>
 </div>
 <div class="all-wine-container">
     {% for wine in wines %}
