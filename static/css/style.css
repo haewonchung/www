@@ -989,9 +989,9 @@ License: none (public domain)
     }
     
     .button-name {
-        height: 3vw;
-        width: 20vw;
-        background: goldenrod;
+        height: 5vw;
+        width: 55vw;
+        background: rgba(108, 12, 18, 1);
         color: #fff;
         border: none;
         position: relative;
@@ -1000,7 +1000,7 @@ License: none (public domain)
         cursor: pointer;
         transition: 800ms ease all;
         outline: none;
-        margin-top: 3vw;
+        margin-top: 8vw;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1008,7 +1008,7 @@ License: none (public domain)
     
     .button-name:hover {
         background: #fff;
-        color: goldenrod;
+        color: rgba(108, 12, 18, 1);
     }
     
     .button-name:before,
@@ -1019,7 +1019,7 @@ License: none (public domain)
         right: 0;
         height: 2px;
         width: 0;
-        background: goldenrod;
+        background: rgba(108, 12, 18, 1);
         transition: 400ms ease all;
     }
     
