@@ -429,6 +429,11 @@ License: none (public domain)
         color: white;
         padding-left: 2vw;
         outline: none;
+        transition-duration: 0.3s;
+    }
+    
+    #search_word:focus {
+        background-color: #852f33bb;
     }
     
     #searchForm img {
@@ -436,6 +441,7 @@ License: none (public domain)
         height: 15px;
         height: 15px;
         margin-left: 1vw;
+        z-index: 1;
     }
     
     input::placeholder {
@@ -475,7 +481,7 @@ License: none (public domain)
     }
     
     hr {
-        background-color: white;
+        background-color: black;
         width: 100%;
         height: 2px;
         border: none;
@@ -618,27 +624,37 @@ License: none (public domain)
     }
     /*wine_information*/
     
+    .information-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        margin: auto 0;
+    }
+    
     .information-part {
         margin-top: 200px;
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 65vw;
     }
     
     .wine-photo {
-        height: 32vw;
+        height: 50vh;
         margin: 0px 5vw;
     }
     
     .wine-photo img {
         width: 100%;
-        height: 32vw;
+        height: 50vh;
         object-fit: cover;
         border-radius: 20px;
     }
     
     .body-right {
-        height: 32vw;
+        height: 100%;
         width: 32vw;
         margin: 0px 5vw;
     }
@@ -647,7 +663,6 @@ License: none (public domain)
         width: 400px;
         display: flex;
         align-items: center;
-        margin-left: 1vw;
         font-size: larger;
     }
     
@@ -706,6 +721,7 @@ License: none (public domain)
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
+        margin-top: 2vw;
     }
     
     .wine-rating {
@@ -714,66 +730,19 @@ License: none (public domain)
         flex-direction: row;
     }
     
-    .food-body {
-        display: flex;
-        flex-direction: row;
-        margin: 0 auto;
-        margin-top: 100px;
-        flex-wrap: wrap;
-    }
-    
-    .food {
-        height: 320px;
-        width: 240px;
-        border-radius: 20px;
-    }
-    
-    .food-right {
-        width: 170px;
-        margin-left: 20px;
-    }
-    
-    .menu {
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 170px;
-        margin-left: 100px;
-    }
-    
-    .return-main {
-        display: flex;
-        justify-content: flex-end;
-    }
-    
-    .return-main-button {
-        width: 250px;
-        height: 60px;
-        background: #C49A37;
-        border-radius: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .food-frame {
-        margin: 0 auto;
-        margin-bottom: 100px;
-        margin-top: 200px;
-    }
-    
     .navyBtn {
-        height: 2vw;
+        height: 2.5vw;
         width: 100%;
         background: goldenrod;
         color: #fff;
         border: none;
         position: relative;
-        font-size: 1vw;
+        font-size: 1.3vw;
         padding: 0 2em;
         cursor: pointer;
         transition: 800ms ease all;
         outline: none;
-        margin-bottom: 0.3vw;
+        margin-top: 1vw;
     }
     
     .navyBtn:hover {
@@ -839,40 +808,18 @@ License: none (public domain)
         margin-top: 0.5vw;
     }
     
+    .wine-comment__box {
+        margin-top: 2vw;
+        width: 55vw;
+    }
+    
     .wine-comment__txt {
         padding: 0 1vw;
         padding-top: 1vw;
-        font-size: 0.8vw;
+        font-size: 1.1vw;
         font-weight: 400;
         font-style: italic;
         line-height: 140%;
-    }
-    
-    .font56 {
-        font-size: 56px;
-    }
-    
-    .marleffont24 {
-        margin-left: 50px;
-        font-size: 24px;
-    }
-    
-    .marleffont32 {
-        font-size: 32px;
-        margin-left: 20px
-    }
-    
-    .font26 {
-        font-size: 26px;
-    }
-    
-    .word-font18 {
-        word-break: break-all;
-        font-size: 18px;
-    }
-    
-    .button-name {
-        color: white;
     }
     /* Wine Profile 부분 */
     
@@ -882,6 +829,11 @@ License: none (public domain)
         justify-content: space-between;
         margin-right: 1vw;
         align-items: center;
+    }
+    
+    .taste-profile__text {
+        font-size: 1vw;
+        font-weight: 400;
     }
     
     .taste-profile__img {
@@ -946,6 +898,167 @@ License: none (public domain)
         margin-top: 1vw;
         display: flex;
         justify-content: center;
+    }
+    /* 안주 추천 부분 */
+    
+    .food-frame {
+        margin: 0 auto;
+        margin-bottom: 100px;
+        margin-top: 200px;
+        width: 65vw;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .food-header {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .food-header div {
+        background-color: goldenrod;
+        width: 17vw;
+        height: 4vw;
+        border-radius: 2vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2vw;
+    }
+    
+    .food-header p:first-child {
+        font-size: 3vw;
+        color: white;
+    }
+    
+    .food-body {
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto;
+        margin-top: 100px;
+        flex-wrap: wrap;
+        align-items: baseline;
+    }
+    
+    .menu-food {
+        height: 8vw;
+        width: 12vw;
+    }
+    
+    .food {
+        height: 8vw;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 1.5vw;
+    }
+    
+    .food-right {
+        width: 12vw;
+        margin-left: 2vw;
+    }
+    
+    .food-right__title {
+        color: #c39a37;
+        font-weight: 600;
+        font-size: 1.5vw;
+        margin-bottom: 0.5vw;
+    }
+    
+    .food-right__desc {
+        font-weight: 600;
+        font-size: 0.8vw;
+        line-height: 150%;
+        font-weight: 300;
+    }
+    
+    .menu {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        margin-bottom: 5vw;
+        margin-left: 3vw;
+    }
+    
+    .return-main {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .button-name {
+        height: 3vw;
+        width: 20vw;
+        background: goldenrod;
+        color: #fff;
+        border: none;
+        position: relative;
+        font-size: 1.3vw;
+        padding: 0 2em;
+        cursor: pointer;
+        transition: 800ms ease all;
+        outline: none;
+        margin-top: 3vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .button-name:hover {
+        background: #fff;
+        color: goldenrod;
+    }
+    
+    .button-name:before,
+    .button-name:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 2px;
+        width: 0;
+        background: goldenrod;
+        transition: 400ms ease all;
+    }
+    
+    .button-name:after {
+        right: inherit;
+        top: inherit;
+        left: 0;
+        bottom: 0;
+    }
+    
+    .button-name:hover:before,
+    .button-name:hover:after {
+        width: 100%;
+        transition: 800ms ease all;
+    }
+    
+    .marleffont24 {
+        font-size: 24px;
+    }
+    
+    .marleffont24-wine {
+        font-size: 24px;
+        font-weight: 600;
+        color: #c39a37;
+        font-style: italic;
+    }
+    
+    .marleffont32 {
+        font-size: 32px;
+        margin-left: 20px
+    }
+    
+    .word-font18 {
+        word-break: break-all;
+        font-size: 18px;
+    }
+    
+    .button-name {
+        color: white;
     }
     /*wine_all&my_pick*/
     
