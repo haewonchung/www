@@ -12,6 +12,7 @@ class Wine(models.Model):
     type = models.CharField(max_length=100)
     region = models.CharField(max_length=100)
     country = models.CharField(max_length=100, null=True)
+    national_flag = models.URLField(max_length=256, null=True)
     rating = models.FloatField()
     primary_flavors = models.CharField(max_length=256, null=True)
     tags = TaggableManager(blank=True)    # for primary_flavors
@@ -21,6 +22,9 @@ class Wine(models.Model):
     saved_count = models.PositiveIntegerField(default=0)
     ytinfo = models.TextField(null=True)
     yturl = models.URLField(max_length=256, null=True)
+
+    def get_fields(self):
+        return [(field.name, field.value_to_string(self)) for field in Wine._meta.fields]
 
 
 class WineProfile(models.Model):
@@ -32,6 +36,9 @@ class WineProfile(models.Model):
     tannin = models.FloatField()
     acidity = models.FloatField()
     sweetness = models.FloatField()
+
+    def get_fields(self):
+        return [(field.name, field.value_to_string(self)) for field in WineProfile._meta.fields]
 
 
 class Food(models.Model):

@@ -73,11 +73,9 @@ def my_pick(request):
 
 # 와인 mypick 저장 기능
 @login_required
-def wine_save_toggle(request, wine_id, check_page):
-    print(check_page)
+def wine_save_toggle(request, wine_id, check_page, search_word):
     wine = get_object_or_404(Wine, id=wine_id)
     me = get_object_or_404(User, id=request.user.id)
-
     check_saved_wine = me.my_pic.filter(id=wine_id)
 
     if check_saved_wine.exists():
@@ -89,6 +87,9 @@ def wine_save_toggle(request, wine_id, check_page):
         wine.saved_count += 1
         wine.save()
 
+    if check_page is not None:
+        print('search is', search_word)
+        return redirect(f'/search/?search_word={search_word}')
     return redirect(f'recommendation:{check_page}')
 
 
@@ -103,7 +104,7 @@ def search(request):
             Q(name__icontains=query) | Q(type__icontains=query) | Q(region__icontains=query) | Q(
                 country__icontains=query) | Q(primary_flavors__icontains=query)).distinct()
         # print('products', products)
-    return render(request, 'recommendation/search_result.html', {'query': query, 'wines': products})
+    return render(request, 'recommendation/search_result.html', {'search_word': query, 'wines': products})
 
 
 class TagCloudTV(TemplateView):

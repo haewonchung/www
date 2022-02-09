@@ -8,6 +8,34 @@
         .return-main{
             cursor: pointer;
         }
+        .container {
+          {#position: absolute;#}
+          {#top: 50%;#}
+          {#left: 50%;#}
+          {#transform: translate(-50%, -50%);#}
+        }
+        .steps {
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+          width: 200px;
+        }
+        .step {
+          width: 10px;
+          height: 10px;
+          background: #fff;
+          border: 2px solid rgba(133, 47, 51, 0.5);
+          border-radius: 50%;
+          transition: background 1s;
+        }
+        .step.selected {
+          border: 2px solid #852f34;
+        }
+        .step.completed {
+          border: 2px solid #852f34;
+          background: #852f34;
+        }
+
     </style>
 {% endblock %}
 
@@ -46,7 +74,7 @@
                     <div class="origin-test__origin">
                         <p class="info-title">Origin</p>
                         <div class="origin">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" alt=""
+                            <img src="{{ wine.national_flag }}" alt=""
                                  style="width: 4vw; height: 4vw; border-radius: 50%">
                             <div class="region">
                                 <p class="info-txt">{{ wine.region }}</p>
@@ -280,7 +308,7 @@
                 <div class="food-frame">
                     <div class="food-header">
                         <div>
-                        <p class="font56">안주 추천</p>
+                        <p class="font30" style="font-size: 30px">안주 추천</p>
                         </div>
                         <p class="marleffont24"><span class="marleffont24-wine">{{ wine.name }}</span> 와인과 잘 어울리는 안주는 아래와 같습니다.</p>
                     </div>
@@ -297,7 +325,7 @@
                         </div>
                          {% endfor %}
                 </div>
-                {{ wine.ytinfo }} 관련 동영상 Top #1
+                <p class="food-right__title">{{ wine.ytinfo }}</p>
                 <iframe id="ytplayer" type="text/html" width="640" height="360"
                   src="https://www.youtube.com/embed/{{ wine_id }}"
                   frameborder="0"></iframe>

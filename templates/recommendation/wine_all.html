@@ -5,6 +5,23 @@
         body {
             background-color: white;
         }
+        .image1 {
+            opacity: 1;
+            position: relative;
+            width: 1.4vw;
+            height: 3.4vh;
+            border-radius: 0;
+
+        }
+        .image1:hover {
+            opacity: 0.2;
+            transition: opacity 0.5s;
+            cursor: pointer;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: white;
+        }
     </style>
 {% endblock %}
 
@@ -55,7 +72,7 @@
                     </div>
                     <div class="main-wines__img1">
                         {#                        <div>picked: {{wine.saved_count}}</div>#}
-                        <a href="{% url 'recommendation:wine-save-toggle' wine.id 'wine-all' %}">
+                        <a href="{% url 'recommendation:wine-save-toggle' wine.id 'wine-all' None %}">
                             {% if wine in user.my_pic.all %}
                                 {#                                if wine is in my-pic list #}
                                 <img class="image1" src="{% static 'images/bookmark4.png' %}" alt="">
@@ -64,8 +81,6 @@
                                 <img class="image1" src="{% static 'images/bookmark3.png' %}" alt="">
                             {% endif %}
                         </a>
-                        {#                        <img class="img1" id='save' src="{% static 'images/bookmark1.png' %}" alt="" onclick=save(this.alt)>#}
-                        {#                        <img class="img2" id='save' src="{% static 'images/bookmark2.png' %}" alt="" onclick=save(this.alt)>#}
                     </div>
                 </div>
             </div>

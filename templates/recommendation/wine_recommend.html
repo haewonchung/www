@@ -72,7 +72,7 @@
                             </div>
                             <div class="main-wines__img">
                                 {#                        <div>picked: {{wine.saved_count}}</div>#}
-                                <a href="{% url 'recommendation:wine-save-toggle' wine.id 'wine-recommend' %}">
+                                <a href="{% url 'recommendation:wine-save-toggle' wine.id 'wine-recommend' None %}">
                                     {% if wine in user.my_pic.all %}
                                         {#                                if wine is in my-pic list #}
                                         <img class="image1" src="{% static 'images/bookmark2.png' %}" alt="">
