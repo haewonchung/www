@@ -34,6 +34,7 @@
         </form>
     </div>
 </div>
+<div class="information-box">
     <div class="information-part">
         <div class="wine-photo">
             <img src="https:{{ wine.image }}"
@@ -260,39 +261,53 @@
                         <button type="button" class="navyBtn" onclick="  window.open('{{ wine.purchase_link }}', '_blank'); return false;">Buy</button>
                     </div>
                 </div>
-                <hr style="width: 100%">
+                {% comment %} <hr style="width: 100%">
                 <div class="wine-comment">
                     <p class="info-title">Wine Comment</p>
                     <p class="wine-comment__txt">"{{ wine.comment }}"</p>
-                </div>
+                </div> {% endcomment %}
             </div>
         </div>
+        
+        </div>
+        <div class="wine-comment__box">
+            <hr style="width: 100%">
+                    <div class="wine-comment">
+                        <p class="info-title">Wine Comment</p>
+                        <p class="wine-comment__txt">"{{ wine.comment }}"</p>
+                    </div>
+                </div>
+                <div class="food-frame">
+                    <div class="food-header">
+                        <div>
+                        <p class="font56">안주 추천</p>
+                        </div>
+                        <p class="marleffont24"><span class="marleffont24-wine">{{ wine.name }}</span> 와인과 잘 어울리는 안주는 아래와 같습니다.</p>
+                    </div>
+                    <div class="food-body">
+                        {% for food in food_list %}
+                        <div class="menu">
+                            <div class="menu-food">
+                            <img src="{{ food.link }}" alt="" class="food">
+                            </div>
+                            <div class="food-right">
+                                <p class="food-right__title">{{ food.name }}</p>
+                                <p class="food-right__desc">{{ food.description }}</p>
+                            </div>
+                        </div>
+                         {% endfor %}
+                </div>
+                {{ wine.ytinfo }} 관련 동영상 Top #1
+                <iframe id="ytplayer" type="text/html" width="640" height="360"
+                  src="https://www.youtube.com/embed/{{ wine_id }}"
+                  frameborder="0"></iframe>
+                  <div class="return-main">
+                    <div class="return-main-button">
+                        <button type="button" class="button-name" onclick="location.href='/'">추천 와인으로 돌아가기</button>
+                    </div>
+                </div>
     </div>
 
-    <div class="food-frame">
-        <div class="food-header">
-            <p class="font56">안주 추천</p>
-            <p class="marleffont24">{{ wine.name }}이랑 잘 어울리는 안주는 아래와 같습니다.</p>
-        </div>
-        <div class="food-body">
-            {% for food in food_list %}
-            <div class="menu">
-                <img src="{{ food.link }}" alt="" class="food">
-                <div class="food-right">
-                    <p class="font26">{{ food.name }}</p>
-                    <p class="word-font18">{{ food.description }}</p>
-                </div>
-            </div>
-             {% endfor %}
-        <div class="return-main">
-            <div class="return-main-button">
-                <p class="button-name" onclick="location.href='/'">추천 와인으로 돌아가기</p>
-            </div>
-        </div>
-    </div>
-    {{ wine.ytinfo }} 관련 동영상 Top #1
-    <iframe id="ytplayer" type="text/html" width="640" height="360"
-      src="https://www.youtube.com/embed/{{ wine_id }}"
-      frameborder="0"></iframe>
+    
 
 {% endblock %}
