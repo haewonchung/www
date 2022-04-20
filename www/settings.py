@@ -79,13 +79,16 @@ WSGI_APPLICATION = 'www.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+with open(os.path.join(BASE_DIR, 'www/config/aws.json')) as f:
+    secrets = json.loads(f.read())
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'alisa',
-        'USER': 'admin',
-        'PASSWORD': '7878&*&*',
-        'HOST': 'database-2.c2qq7vmgt5qx.ap-northeast-2.rds.amazonaws.com',
+        'ENGINE': "django.db.backends.mysql",
+        'NAME': secrets['RDS']['NAME'],
+        'USER': secrets['RDS']['USER'],
+        'PASSWORD': secrets['RDS']['PASSWORD'],
+        'HOST': secrets['RDS']['HOST'],
         'PORT': '3306',
     }
 }
@@ -136,14 +139,10 @@ LOGIN_URL = '/sign-in/'  # default '/accounts/login/' 에서 우리 '/sign-in/'�
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'  # To allow collectstatic to automatically put static files in bucket
 
-with open(os.path.join(BASE_DIR, 'www/config/aws.json')) as f:
-    secrets = json.loads(f.read())
-
 AWS_ACCESS_KEY_ID = secrets['AWS']['ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = secrets['AWS']['SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = secrets['AWS']['STORAGE_BUCKET_NAME']
 AWS_DEFAULT_ACL = 'public-read'  # 올린 파일을 누구나 읽을 수 있게 지정합니다!
-
 
 # S3에서 받아오기
 AWS_S3_REGION_NAME = 'ap-northeast-2'
